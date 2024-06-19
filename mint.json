@@ -1,9 +1,9 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Dojah Docs",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/dojah_blue.svg",
+    "light": "/logo/dojah_white.svg"
   },
   "favicon": "/favicon.png",
   "colors": {
@@ -12,16 +12,17 @@
     "dark": "#004E7A"
   },
   "topbarLinks": [
-    {
-      "name": "Documentation",
-      "url": "https://mintlify.com/docs"
-    }
+
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
     "url": "https://dashboard.mintlify.com"
   },
   "tabs": [
+    {
+      "name": "Guides",
+      "url": "guides"
+    },
     {
       "name": "API Reference",
       "url": "api-reference"
@@ -39,6 +40,10 @@
     {
       "group": "API Documentation",
       "pages": ["api-reference/authentication"]
+    },
+    {
+      "group": "Guides",
+      "pages": ["guides/intro"]
     },
     {
       "group": "Endpoint Examples",
