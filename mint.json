@@ -46,10 +46,28 @@
       "pages": ["guides/intro", "guides/keywords", "guides/response-codes", "guides/use-cases"  ]
     },
 
-    {
-      "group": "GETTING STARTED",
-      "pages": ["guides/sign-in", "guides/keywords", "guides/response-codes", "guides/use-cases"  ]
+ 
+
+     {
+        "group": "GETTING STARTED",
+        "pages": [
+
+           "guides/sign-in", "guides/create-an-app", "guides/fund-wallet",
+            "Authentication",
+            {
+                "group": "Authentication",
+                "pages": ["guides/api-keys", "guides/environments", "guides/authorization-guide" ]
+            },
+
+            "Webhooks",
+            {
+                "group": "Webhooks",
+                "pages": ["guides/api-keys", "guides/environments", "guides/authorization-guide" ]
+            }
+        ]
     },
+
+
 
     {
       "group": "Endpoint Examples",
