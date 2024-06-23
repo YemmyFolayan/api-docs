@@ -43,7 +43,7 @@
     },
     {
       "group": "GENERAL",
-      "pages": ["guides/intro", "guides/keywords", "guides/response-codes", "guides/use-cases"  ]
+      "pages": ["guides/general/intro", "guides/general/keywords", "guides/general/response-codes", "guides/general/use-cases"  ]
     },
 
  
@@ -52,21 +52,227 @@
         "group": "GETTING STARTED",
         "pages": [
 
-           "guides/sign-in", "guides/create-an-app", "guides/fund-wallet",
+           "guides/gettingstarted/sign-in", "guides/gettingstarted/create-an-app", "guides/gettingstarted/fund-wallet",
             "Authentication",
             {
                 "group": "Authentication",
-                "pages": ["guides/api-keys", "guides/environments", "guides/authorization-guide" ]
+                "pages": ["guides/gettingstarted/api-keys", "guides/gettingstarted/environments", "guides/gettingstarted/authorization-guide" ]
             },
 
             "Webhooks",
             {
                 "group": "Webhooks",
-                "pages": ["guides/api-keys", "guides/environments", "guides/authorization-guide" ]
+                "pages": ["guides/subscribe-to-service", "guides/fetch-all-webhooks", "guides/delete-webhook", "guides/verify-events" ]
             }
         ]
     },
 
+
+
+
+
+    {
+      "group": "LIBRARIES & SDKS",
+      "pages": [
+
+         "guides/sdks/overviews",
+          "Libraries",
+          {
+              "group": "Libraries",
+              "pages": ["guides/sdks/javascript-library", "guides/sdks/react-library", "guides/sdks/react-native-library", "guides/sdks/flutter-library" ]
+          }
+
+        
+      ]
+  },
+
+
+
+{
+  "group": "GOVERNMENT DATABASE CHECKS",
+  "pages": [
+
+      "Nigeria 🇳🇬",
+      {
+          "group": "Nigeria 🇳🇬",
+          "pages": ["guides/nigeria/lookup-bvn", "guides/nigeria/lookup-phone-number", "guides/nigeria/lookup-nuban", "guides/nigeria/lookup-nuban-kycstatus", "guides/nigeria/lookup-nin", "guides/nigeria/lookup-virtual-nin", "guides/nigeria/lookup-drivers-license", "guides/nigeria/lookup-voters-id", "guides/nigeria/lookup-phone-number", "guides/nigeria/validate-business-registration", "guides/nigeria/validate-firs-tin", "guides/nigeria/lookup-cac", "guides/nigeria/lookup-user-account" ]
+      },
+
+      "Kenya 🇰🇪",
+      {
+          "group": "Kenya 🇰🇪",
+          "pages": ["guides/nigeria/lookup-bvn", "guides/nigeria/lookup-phone-number", "guides/nigeria/lookup-nuban", "guides/nigeria/lookup-nuban-kycstatus", "guides/nigeria/lookup-nin", "guides/nigeria/lookup-virtual-nin", "guides/nigeria/lookup-drivers-license", "guides/nigeria/lookup-voters-id", "guides/nigeria/lookup-phone-number", "guides/nigeria/validate-business-registration", "guides/nigeria/validate-firs-tin", "guides/nigeria/lookup-cac", "guides/nigeria/lookup-user-account" ]
+        },
+
+      "Uganda 🇺🇬",
+      {
+          "group": "Uganda 🇺🇬",
+          "pages": ["guides/nigeria/lookup-bvn", "guides/nigeria/lookup-phone-number", "guides/nigeria/lookup-nuban", "guides/nigeria/lookup-nuban-kycstatus", "guides/nigeria/lookup-nin", "guides/nigeria/lookup-virtual-nin", "guides/nigeria/lookup-drivers-license", "guides/nigeria/lookup-voters-id", "guides/nigeria/lookup-phone-number", "guides/nigeria/validate-business-registration", "guides/nigeria/validate-firs-tin", "guides/nigeria/lookup-cac", "guides/nigeria/lookup-user-account" ]
+        },
+
+      "Ghana 🇬🇭",
+      {
+          "group": "Ghana 🇬🇭",
+          "pages": ["guides/nigeria/lookup-bvn", "guides/nigeria/lookup-phone-number", "guides/nigeria/lookup-nuban", "guides/nigeria/lookup-nuban-kycstatus", "guides/nigeria/lookup-nin", "guides/nigeria/lookup-virtual-nin", "guides/nigeria/lookup-drivers-license", "guides/nigeria/lookup-voters-id", "guides/nigeria/lookup-phone-number", "guides/nigeria/validate-business-registration", "guides/nigeria/validate-firs-tin", "guides/nigeria/lookup-cac", "guides/nigeria/lookup-user-account" ]
+        },
+
+      "Zimbabwe 🇿🇼",
+      {
+          "group": "Zimbabwe 🇿🇼",
+          "pages": ["guides/nigeria/lookup-bvn", "guides/nigeria/lookup-phone-number", "guides/nigeria/lookup-nuban", "guides/nigeria/lookup-nuban-kycstatus", "guides/nigeria/lookup-nin", "guides/nigeria/lookup-virtual-nin", "guides/nigeria/lookup-drivers-license", "guides/nigeria/lookup-voters-id", "guides/nigeria/lookup-phone-number", "guides/nigeria/validate-business-registration", "guides/nigeria/validate-firs-tin", "guides/nigeria/lookup-cac", "guides/nigeria/lookup-user-account" ]
+        },
+
+      "South Africa 🇿🇼",
+      {
+          "group": "South Africa 🇿🇼",
+          "pages": ["guides/nigeria/lookup-bvn", "guides/nigeria/lookup-phone-number", "guides/nigeria/lookup-nuban", "guides/nigeria/lookup-nuban-kycstatus", "guides/nigeria/lookup-nin", "guides/nigeria/lookup-virtual-nin", "guides/nigeria/lookup-drivers-license", "guides/nigeria/lookup-voters-id", "guides/nigeria/lookup-phone-number", "guides/nigeria/validate-business-registration", "guides/nigeria/validate-firs-tin", "guides/nigeria/lookup-cac", "guides/nigeria/lookup-user-account" ]
+        },
+
+      "Angola 🇦🇴",
+      {
+          "group": "Angola 🇦🇴",
+          "pages": ["guides/nigeria/lookup-bvn", "guides/nigeria/lookup-phone-number", "guides/nigeria/lookup-nuban", "guides/nigeria/lookup-nuban-kycstatus", "guides/nigeria/lookup-nin", "guides/nigeria/lookup-virtual-nin", "guides/nigeria/lookup-drivers-license", "guides/nigeria/lookup-voters-id", "guides/nigeria/lookup-phone-number", "guides/nigeria/validate-business-registration", "guides/nigeria/validate-firs-tin", "guides/nigeria/lookup-cac", "guides/nigeria/lookup-user-account" ]
+        }
+  ]
+},
+
+
+
+
+{
+  "group": "IDENTITY VERIFICATION SERVICES",
+  "pages": [
+
+ 
+      "Global Identity Verification 🌍",
+      {
+          "group": "Global Identity Verification 🌍",
+          "pages": ["guides/api-keys", "guides/environments", "guides/authorization-guide" ]
+      },
+
+      "Nigeria 🇳🇬",
+      {
+          "group": "Nigeria 🇳🇬",
+          "pages": ["guides/subscribe-to-service", "guides/fetch-all-webhooks", "guides/delete-webhook", "guides/verify-events" ]
+      },
+
+      "United States 🇺🇸",
+      {
+          "group": "United States 🇺🇸",
+          "pages": ["guides/subscribe-to-service", "guides/fetch-all-webhooks", "guides/delete-webhook", "guides/verify-events" ]
+      },
+
+      "United Kingdom 🇬🇧",
+      {
+          "group": "United Kingdom 🇬🇧",
+          "pages": ["guides/subscribe-to-service", "guides/fetch-all-webhooks", "guides/delete-webhook", "guides/verify-events" ]
+      },
+
+      "Canada 🇨🇦",
+      {
+          "group": "Canada 🇨🇦",
+          "pages": ["guides/subscribe-to-service", "guides/fetch-all-webhooks", "guides/delete-webhook", "guides/verify-events" ]
+      }
+  ]
+},
+
+
+
+
+{
+  "group": "BIOMETRIC CHECKS",
+  "pages": [
+
+     "guides/sign-in"
+     
+  ]
+},
+
+
+{
+  "group": "DOCUMENT ANALYSIS",
+  "pages": [
+
+     "guides/sign-in"
+     
+  ]
+},
+
+
+{
+  "group": "ADDRESS VERIFICATION",
+  "pages": [
+
+     "guides/sign-in"
+     
+  ]
+},
+
+
+{
+  "group": "AML",
+  "pages": [
+
+ 
+      "AML Screening Individual",
+      {
+          "group": "AML Screening Individual",
+          "pages": ["guides/api-keys", "guides/environments", "guides/authorization-guide" ]
+      },
+
+      "AML Screening Business",
+      {
+          "group": "AML Screening Business",
+          "pages": ["guides/subscribe-to-service", "guides/fetch-all-webhooks", "guides/delete-webhook", "guides/verify-events" ]
+      }
+  ]
+},
+
+{
+  "group": "FRAUD APIS",
+  "pages": [
+
+     "guides/sign-in"
+     
+  ]
+},
+
+{
+  "group": "MESSAGING SERVICES",
+  "pages": [
+
+     "guides/sign-in"
+     
+  ]
+},
+
+{
+  "group": "GLOBAL BUSINESS CHECK",
+  "pages": [
+
+     "guides/sign-in"
+     
+  ]
+},
+
+{
+  "group": "FRAUD MONITORING",
+  "pages": [
+
+     "guides/sign-in"
+     
+  ]
+},
+
+
+{
+  "group": "GENERAL SERVICES",
+  "pages": [
+
+     "guides/sign-in"
+     
+  ]
+},
 
 
     {
