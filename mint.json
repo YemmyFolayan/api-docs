@@ -53,16 +53,14 @@
         "pages": [
 
            "guides/gettingstarted/sign-in", "guides/gettingstarted/create-an-app", "guides/gettingstarted/fund-wallet",
-            "Authentication",
             {
                 "group": "Authentication",
                 "pages": ["guides/gettingstarted/api-keys", "guides/gettingstarted/environments", "guides/gettingstarted/authorization-guide" ]
             },
 
-            "Webhooks",
             {
                 "group": "Webhooks",
-                "pages": ["guides/subscribe-to-service", "guides/fetch-all-webhooks", "guides/delete-webhook", "guides/verify-events" ]
+                "pages": ["guides/gettingstarted/subscribe-to-service", "guides/gettingstarted/fetch-all-webhooks", "guides/gettingstarted/delete-webhook", "guides/gettingstarted/verify-events" ]
             }
         ]
     },
@@ -76,7 +74,7 @@
       "pages": [
 
          "guides/sdks/overviews",
-          "Libraries",
+        
           {
               "group": "Libraries",
               "pages": ["guides/sdks/javascript-library", "guides/sdks/react-library", "guides/sdks/react-native-library", "guides/sdks/flutter-library" ]
@@ -92,46 +90,45 @@
   "group": "GOVERNMENT DATABASE CHECKS",
   "pages": [
 
-      "Nigeria 🇳🇬",
+    
       {
           "group": "Nigeria 🇳🇬",
           "pages": ["guides/nigeria/lookup-bvn", "guides/nigeria/lookup-phone-number", "guides/nigeria/lookup-nuban", "guides/nigeria/lookup-nuban-kycstatus", "guides/nigeria/lookup-nin", "guides/nigeria/lookup-virtual-nin", "guides/nigeria/lookup-drivers-license", "guides/nigeria/lookup-voters-id", "guides/nigeria/lookup-phone-number", "guides/nigeria/validate-business-registration", "guides/nigeria/validate-firs-tin", "guides/nigeria/lookup-cac", "guides/nigeria/lookup-user-account" ]
       },
 
-      "Kenya 🇰🇪",
+      
       {
           "group": "Kenya 🇰🇪",
           "pages": ["guides/kenya/lookup-national-id", "guides/kenya/lookup-passport", "guides/kenya/lookup-kra-pin" ]
         },
 
-      "Uganda 🇺🇬",
       {
           "group": "Uganda 🇺🇬",
           "pages": [ "guides/uganda/lookup-voters-id", "guides/uganda/lookup-telco-subscriber" ]
         },
 
-      "Ghana 🇬🇭",
+      
       {
           "group": "Ghana 🇬🇭",
-          "pages": ["guides/ghana/lookup-passport", "guides/nigeria/lookup-drivers-license", "guides/nigeria/lookup-voters-id", "guides/ghana/lookup-tin", "guides/ghana/lookup-ssnit", "guides/ghana/validate-digital-addresses" ]
+          "pages": ["guides/ghana/lookup-passport", "guides/ghana/lookup-drivers-license", "guides/ghana/lookup-voters-id", "guides/ghana/lookup-tin", "guides/ghana/lookup-ssnit", "guides/ghana/validate-digital-addresses" ]
         },
 
-      "Zimbabwe 🇿🇼",
+   
       {
           "group": "Zimbabwe 🇿🇼",
           "pages": ["guides/zimbabwe/lookup-national-id", "guides/zimbabwe/lookup-credit-check"  ]
         },
 
-      "South Africa 🇿🇼",
+     
       {
           "group": "South Africa 🇿🇼",
           "pages": ["guides/southafrica/lookup-national-id" ]
         },
 
-      "Angola 🇦🇴",
+    
       {
           "group": "Angola 🇦🇴",
-          "pages": ["guides/nigeria/lookup-national-id"]
+          "pages": ["guides/angola/lookup-national-id"]
         }
   ]
 },
@@ -144,34 +141,33 @@
   "pages": [
 
  
-      "Global Identity Verification 🌍",
+    
       {
           "group": "Global Identity Verification 🌍",
           "pages": ["guides/globalverification/selfie-photo-id", "guides/globalverification/location-reverse-geocoding" ]
       },
 
-      "Nigeria 🇳🇬",
+  
       {
           "group": "Nigeria 🇳🇬",
           "pages": ["guides/nigeria/validate-bvn", "guides/nigeria/verify-nin-with-selfie-image", "guides/nigeria/verify-bvn-with-selfie-image", "guides/nigeria/age-identity-verification", "guides/nigeria/selfie-verification-vnin" ]
       },
 
-      "United States 🇺🇸",
+   
       {
           "group": "United States 🇺🇸",
-          "pages": ["guides/subscribe-to-service", "guides/fetch-all-webhooks", "guides/delete-webhook", "guides/verify-events" ]
+          "pages": ["guides/unitedstates/verify-us-individual" ]
       },
 
-      "United Kingdom 🇬🇧",
+      
       {
           "group": "United Kingdom 🇬🇧",
-          "pages": ["guides/subscribe-to-service", "guides/fetch-all-webhooks", "guides/delete-webhook", "guides/verify-events" ]
+          "pages": ["guides/unitedkingdom/uk-ekyc" ]
       },
 
-      "Canada 🇨🇦",
       {
           "group": "Canada 🇨🇦",
-          "pages": ["guides/subscribe-to-service", "guides/fetch-all-webhooks", "guides/delete-webhook", "guides/verify-events" ]
+          "pages": ["guides/canada/canada-ekyc"]
       }
   ]
 },
@@ -183,7 +179,7 @@
   "group": "BIOMETRIC CHECKS",
   "pages": [
 
-     "guides/gettingstarted/sign-in"
+     "guides/biometrics/liveness-check"
      
   ]
 },
@@ -193,7 +189,7 @@
   "group": "DOCUMENT ANALYSIS",
   "pages": [
 
-     "guides/gettingstarted/sign-in"
+     "guides/documentanalysis/document-analysis", "guides/documentanalysis/generic-ocr-service"
      
   ]
 },
@@ -203,7 +199,7 @@
   "group": "ADDRESS VERIFICATION",
   "pages": [
 
-     "guides/gettingstarted/sign-in"
+     "guides/addressverification/individual-address-verification", "guides/addressverification/business-address-verification",  "guides/addressverification/fetch-address-verification-data"
      
   ]
 },
@@ -214,16 +210,15 @@
   "pages": [
 
  
-      "AML Screening Individual",
+     
       {
           "group": "AML Screening Individual",
-          "pages": ["guides/api-keys", "guides/environments", "guides/authorization-guide" ]
+          "pages": ["guides/aml/screening-info-individual"]
       },
 
-      "AML Screening Business",
       {
           "group": "AML Screening Business",
-          "pages": ["guides/subscribe-to-service", "guides/fetch-all-webhooks", "guides/delete-webhook", "guides/verify-events" ]
+          "pages": ["guides/aml/screening-info-business" ]
       }
   ]
 },
@@ -232,7 +227,7 @@
   "group": "FRAUD APIS",
   "pages": [
 
-     "guides/gettingstarted/sign-in"
+     "guides/fraud/user-screening", "guides/fraud/ip-screening", "guides/fraud/email-check", "guides/fraud/phone-check"
      
   ]
 },
@@ -241,7 +236,7 @@
   "group": "MESSAGING SERVICES",
   "pages": [
 
-     "guides/gettingstarted/sign-in"
+     "guides/messaging/send-messages", "guides/messaging/get-message-status", "guides/messaging/send-otp", "guides/messaging/validate-otp"
      
   ]
 },
@@ -250,7 +245,7 @@
   "group": "GLOBAL BUSINESS CHECK",
   "pages": [
 
-     "guides/gettingstarted/sign-in"
+     "guides/globalverification/bussinesscheck/global-business-search",   "guides/globalverification/bussinesscheck/global-business-details"
      
   ]
 },
@@ -259,7 +254,8 @@
   "group": "FRAUD MONITORING",
   "pages": [
 
-     "guides/gettingstarted/sign-in"
+     "guides/fraud/monitoring/overview",  
+     "guides/fraud/monitoring/live-transactions"
      
   ]
 },
@@ -269,7 +265,11 @@
   "group": "GENERAL SERVICES",
   "pages": [
 
-     "guides/gettingstarted/sign-in"
+     "guides/general/service/resolve-nuban", 
+     "guides/general/service/fetch-banks", 
+     "guides/general/service/resolve-card-bin",
+     "guides/general/service/buy-airtime",
+     "guides/general/service/buy-internet-data"
      
   ]
 },
