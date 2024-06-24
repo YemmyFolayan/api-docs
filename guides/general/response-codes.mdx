@@ -1,31 +1,28 @@
 ---
 title: "Response Codes"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "Dojah uses standard HTTP response codes to indicate the status of a particular request."
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
+> ## 📘 These responses are grouped into:
+> 
+> -   Informational Responses - (100 - 199)
+> -   Successful Responses - (200 - 299)
+> -   Redirects - (300 - 399)
+> -   Client Errors - (400 - 499)
+> -   Server Errors - (500 - 599)
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
-
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
-
-With Dojah, you can:
-
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
-
-Dojah is your trusted partner in building a secure and compliant future for your business.
-
-Get started today and experience the power of Dojah!
+|  |  |  |
+| --- | --- | --- |
+| **Status code** | **Error** | **Description** |
+| **200** | Successful 💯 | _Your request was successful._ |
+| **400** | Bad request | _Most likely an invalid syntax. Check all parameters_. |
+| **401** | Unauthorized | _You are unauthorized for this request. Contact [support@dojah.io](mailto:support@dojah.io)._ |
+| **402** | Payment Required | _You balance is most likely low and you are required to top us your balance_ |
+| **404** | Not found | _URL not recognized. Check to confirm the right URL. Records/parameters not found_ |
+| **405** | Method not found | _The request is disabled. Check the URL or rollback recent upgrades._ |
+| **408** | Request timeout | _Your request took longer than it should have. Check your internet connection._ |
+| **424** | Failed Dependency | _Third Party service Failure_ |
+| **429** | Too many requests | _You have sent too many requests that has exceeded the rate limit. You need to wait a while._ |
+| **500,502,503,504** | Server error | _This is a very rare occurrence where the server is unable to process a request properly. Contact [support@dojah.io](mailto:support@dojah.io)._ |

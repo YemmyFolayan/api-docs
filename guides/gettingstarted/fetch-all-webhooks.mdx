@@ -1,31 +1,46 @@
 ---
 title: "Fetch All Webhooks"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "This endpoint allows you to Fetch All your Application Webhooks"
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
+###Request
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+```text Curl
+ {{baseUrl}}api/v1/webhook/fetch
+```
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+### [](https://api-docs.dojah.io/docs/subscribe-to-services#header)
 
-With Dojah, you can:
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+### [](https://api-docs.dojah.io/docs/subscribe-to-services#response-sample)
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
-
-Get started today and experience the power of Dojah!
+```json Response
+{
+  "entity": [
+    {
+      "app_id": "61e6bef823664a003647505f",
+      "endpoint": "https://webhook.site/ec43b51e-eca7-42f0-b794-fb4f7b8c89d0",
+      "environment": "live",
+      "service": "sms",
+      "confirmation_status": "DELIVERED",
+      "date_created": "2022-01-18T14:31:36.810231+01:00",
+      "date_updated": "2022-01-18T14:31:36.810319+01:00"
+    },
+    {
+      "app_id": "61e6bef823664a003647505f",
+      "endpoint": "https://webhook.site/ec43b51e-eca7-42f0-b794-fb4f7b8c89d0",
+      "environment": "sandbox",
+      "service": "sms",
+      "confirmation_status": "DELIVERED",
+      "date_created": "2022-01-18T14:22:22.398813+01:00",
+      "date_updated": "2022-01-18T14:22:22.398857+01:00"
+    }
+  ]
+}
+```

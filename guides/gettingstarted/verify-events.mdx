@@ -1,31 +1,37 @@
 ---
 title: "Verify Events"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "There are two ways to ensure events you receive are from Dojah."
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
+1.  IP Whitelisting
+2.  Signature validation
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+## [](https://api-docs.dojah.io/docs/subscribe-to-services#ip-whitelisting)
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+With this method, you only allow certain IP addresses to access your webhook URL while blocking out others. Dojah will only send webhooks from these IP addresses:
 
-With Dojah, you can:
+1.  **18.117.209.2** , **3.137.39.253**
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+## [](https://api-docs.dojah.io/docs/subscribe-to-services#signature-validation)
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+Events sent from Dojah carry the **x-dojah-signature** header. The value of this header is a HMAC SHA256 signature of the event payload signed using your secret key. Verifying the header signature should be done before processing the event:
 
-Get started today and experience the power of Dojah!
+```javascript Javascript
+var crypto = require('crypto');
+var secret = process.env.SECRET_KEY;
+
+// Using Express
+app.post("/webhookurl", function(req, res) {
+    //validate event
+    const hash = crypto.createHmac('sha256', secret).update(JSON.stringify(req.body)).digest('hex');
+
+    if (hash == req.headers['x-dojah-signature']) {
+    // Retrieve the request's body
+    const event = req.body;
+    // Do something with event  
+    }
+    res.send(200);
+});
+```
