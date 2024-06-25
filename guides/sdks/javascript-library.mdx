@@ -1,31 +1,214 @@
 ---
 title: "Javascript Library"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "The Dojah platform has a smooth widget that enables your users to authorize access to their accounts. This widget works effortlessly across various browsers and devices of all sizes."
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
+**How to Generate Widget**
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
+Using the Dojah CDN-hosted Javascript client library, you can install the Dojah widget into your application by simply adding a script tag to your HTML document and insert basic configuration parameters.
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+**Step 1: Add the Client Javascript Library**
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+Add the script tag before the end of the closing body tag of your desired HTML page where you desire to give users the ability to authorize access to a financial institution.
 
-With Dojah, you can:
+```javascript javascript
+<script src="https://widget.dojah.io/widget.js"></script>
+```
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+> ## ❗️Adding the async attribute can cause the inline code to return undefined because the library may not be available at that moment. So avoid the use of async and defer for now.
+> 
+> Adding the async attribute can cause the inline code to return undefined because the library may not be available at that moment. So avoid the use of async and defer for now.
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+**Step 2: Configure the Javascript Client Library**
 
-Get started today and experience the power of Dojah!
+At this stage, you can now create a Dojah widget object by passing in your public key in javascript object representing your preferred configuration options.
+
+```javascript javascript
+const options = {
+  app_id: app_id, //your app_id here
+  p_key: p_key, //your production public key here
+  type: 'custom',
+  user_data: {
+    first_name: {$first_name}, //optional
+    last_name: {$last_name}, //optional
+    dob: {$dob}, //YYYY-MM-DD Optional
+    residence_country: 'NG', //optional
+    email: {$email}//optional
+  },
+  
+  metadata: {
+    user_id: '12xxxxsxsxsxssx1',
+  },
+  
+  config: {
+    widget_id: "91281818181919191" 
+
+  },
+  onSuccess: function (response) {
+    console.log('Success', response);
+  },
+  onError: function (err) {
+    console.log('Error', err);
+  },
+  onClose: function () {
+    console.log('Widget closed');
+  }
+};
+
+const connect = new Connect(options);
+const button = document.querySelector('#button-connect');
+button.addEventListener('click', function () {
+  connect.setup();
+  connect.open();
+});
+```
+
+
+
+
+| Parameter    | Type     | Description                                                                                                                                         |
+|--------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| type         | string   | Widget Type: Values are **'custom', 'verification', 'identification', 'verification', 'liveness'**                                                   |
+| app_id       | string   | Application Id, Get it from your dojah application dashboard [here](https://app.dojah.io/dashboard)                                                  |
+| p_key        | string   | Public Key, Get it from your dojah application dashboard [here](https://app.dojah.io/apps)                                                           |
+| reference_id | string   | Reference ID, It can be passed to keep track of the verification steps (Started, Ongoing, Successful). NB: reference_id character length must be greater than 10 |
+| widget_id    | string   | Widget ID, Get it from your Easy Onboard application dashboard [here](https://app.dojah.io/easy-onboard)                                             |
+| user_data    | object   | Automatically update the user data page, and thus skip the page |
+| gov_data     | object   | Automatically update the government data page, and thus skip the page|
+| metadata     | object   | Your application's metadata to be passed back to you via webhook, onSuccess, or onError                                                              |
+| onSuccess    | function | This is called when your user has successfully completed enrollment with their preferred institution. **The sample response data below is passed to the widget**  |
+| onError      | function | This is called when your user was unable to successfully complete enrollment.                                                                        |
+| onClose      | function | This is called when the widget is closed.                                                                                                            |
+
+
+
+**Step 3: Handle a Successful Verification**
+
+On successful enrollment, the onSuccess callback function that you supplied is called by the client library. We then return the connected account code to your server.
+
+Kindly use the overall status (**response.status** (Boolean, i.e true or false)) to ascertain if the request failed or succeeded.
+
+> ## 📘 Webhook Notifications
+> 
+> Webhook Notifications
+> 
+> You can receive the same data below (also passed to onSuccess and onError) via a webhook call.
+> 
+> Register your url for webhook calls [here](https://api-docs.dojah.io/docs/subscribe-to-services) and ensure `kyc.widget` is the `service` you are subscribed to.
+> 
+> In Config object Kindly set **webhook** object value to true (Boolean)
+> 
+> Example : **webhook : true**
+
+```json webhook response
+{
+  "metadata": {
+   // Any other metadata you pass to the widget will also be listed here
+    "user_id": '12xxxxsxsxsxssx1',
+    "deviceInfo": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0",
+    "ipInfo": {
+      "status": "success",
+      "country": "Nigeria",
+      "countryCode": "NG",
+      "region": "LA",
+      "regionName": "Lagos",
+      "city": "Lagos",
+      "zip": "",
+      "lat": 6.4474,
+      "lon": 3.3903,
+      "timezone": "Africa/Lagos",
+      "isp": "MTN NIGERIA Communication limited",
+      "org": "MTN Nigeria",
+      "as": "AS29465 MTN NIGERIA Communication limited",
+      "query": "102.89.33.XX"
+    }
+  },
+  "data": {
+    "index": {
+      "data": {},
+      "status": true,
+      "message": "Successfully continued to the main checks."
+    },
+    "countries": {
+      "data": {
+        "country": "Nigeria"
+      },
+      "status": true,
+      "message": "Successfully continued to the next step."
+    },
+    "phonenumber": {
+      "data": {
+        "mobile": "+234819999999999"
+      },
+      "status": true,
+      "message": "Successfully continued to the next step."
+    },
+    "user-data": {
+      "status": true,
+      "data": {
+        "firstName": "JOHN",
+        "lastName": "DOE",
+        "dob": "1997-12-10"
+      },
+      "message": ""
+    },
+    "government-data": {
+      "data": {
+        "entity": {
+          "nin": "12334567899",
+          "firstname": "JOHN",
+          "middlename": "DOJAH",
+          "surname": "DOE",
+          "maidenname": "",
+          "telephoneno": "0809999999999",
+          "state": "Imo",
+          "place": "MBUTU",
+          "profession": "STUDENT",
+          "title": "mr",
+          "height": "****",
+          "email": "",
+          "birthdate": "1997-12-10",
+          "birthstate": "Lagos",
+          "birthcountry": "nigeria",
+          "centralID": "8051646",
+          "documentno": "",
+          "educationallevel": "",
+          "employmentstatus": "",
+          "othername": "",
+          "pfirstname": "",
+          "photo": "/9j/4AAQSkZJRgABAAAQUBAQEBAQEAAAAAAAAAAAEC",
+          "pmiddlename": "",
+          "psurname": "",
+          "nspokenlang": "IGBO",
+          "ospokenlang": "ENGLISH",
+          "religion": "christianity",
+          "residence_Town": "OJO",
+          "residence_lga": "Ojo",
+          "residence_state": "Lagos",
+          "residencestatus": "birth",
+          "residence_AddressLine1": "CAMP 5 BLOCK 8 ROOM 7 NIGERIAN ARMY CANTONMENT",
+          "residence_AddressLine2": "CAMP 5 BLOCK 8 ROOM 7 NIGERIAN ARMY CANTONMENT",
+          "self_origin_lga": "Ojo",
+          "self_origin_place": "",
+          "self_origin_state": "Lagos",
+          "signature":"/9j/4AAQSkZJRgABAAAQUBAQEBAQEAAAAAAAAAAAEC",
+          "nationality": "",
+          "gender": "m",
+          "trackingId": "S7Y0NYFM1000468",
+          "customer": "365eb08f-6a1d-46bc-9aa0-XXXXXXXX"
+        }
+      },
+      "message": "",
+      "status": true
+    }
+  },
+  "selfieUrl": "https://dojah-images.s3.amazonaws.com/633d5225b93aae0034ba243dface.jpeg",
+  "verificationId": 29928,
+  "verificationUrl": "https://app.dojah.io/verifications/bio-data/DJ-78BD664121",
+  "referenceId": "DJ-78BD664121",
+  "verificationType": "nin",
+  "verificationValue": "12334567899",
+  "verificationMode": "selfie",
+}
+```
