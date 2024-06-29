@@ -1,31 +1,122 @@
 ---
 title: "Lookup BVN"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "The Lookup BVN endpoint returns details of a particular BVN"
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+### [](https://api-docs.dojah.io/docs/lookup-bvn#request)
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+```text [GET]
+{{baseUrl}}/api/v1/kyc/bvn/full</span>
 
-With Dojah, you can:
+```
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+### [](https://api-docs.dojah.io/docs/lookup-bvn#headers)
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
 
-Get started today and experience the power of Dojah!
+### [](https://api-docs.dojah.io/docs/lookup-bvn#query-parameters)
+
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| bvn \* | string | A valid bvn | required |
+
+### [](https://api-docs.dojah.io/docs/lookup-bvn#response-sample)
+
+```json Response
+{
+  "entity": {
+        "bvn": "22171234567",
+        "first_name": "JOHN",
+        "last_name": "DOE",
+        "middle_name": "AHMED",
+        "gender": "Male",
+        "date_of_birth": "1997-05-16",
+        "phone_number1": "08012345678",
+        "image": "BASE 64 IMAGE",
+        "phone_number2": "08012345678"
+    }
+}
+```
+
+### 
+
+Test Credentials for Sandbox
+
+[](https://api-docs.dojah.io/docs/lookup-bvn#test-credentials-for-sandbox)
+
+Kindly use this Test BVN in sandbox Environment
+
+bvn = `22222222222`
+
+___
+
+## BVN Advanced
+
+
+
+```text [GET]
+{{baseUrl}}/api/v1/kyc/bvn/advance
+```
+
+### [](https://api-docs.dojah.io/docs/lookup-bvn#headers-1)
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
+
+### [](https://api-docs.dojah.io/docs/lookup-bvn#query-parameters-1)
+
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| bvn \* | string | A valid bvn | required |
+
+### [](https://api-docs.dojah.io/docs/lookup-bvn#response-sample-1)
+
+```json Response
+{
+  "entity": {
+        "bvn": "22171234567",
+        "first_name": "JOHN",
+        "last_name": "DOE",
+        "middle_name": "AHMED",
+        "gender": "Male",
+        "date_of_birth": "1997-05-16",
+        "phone_number1": "08012345678",
+        "image": "BASE 64 IMAGE",
+      	"email": "johndoe@gmail.com",
+        "enrollment_bank": "GTB",
+        "enrollment_branch": "IKEJA",
+        "level_of_account": "LEVEL 2",
+        "lga_of_origin": "OSOGBO",
+        "lga_of_residence": "IKEJA",
+        "marital_status": "SINGLE",
+        "name_on_card": "",
+        "nationality": "NIGERIAN",
+        "nin": "70123456789",
+        "phone_number2": "08012345678",
+        "registration_date": "",
+        "residential_address": "",
+        "state_of_origin": "OSUN",
+        "state_of_residence": "LAGOS",
+        "title": "MISS",
+        "watch_listed": "NO"
+    }
+}
+```
+
+### 
+
+Test Credentials for Sandbox
+
+[](https://api-docs.dojah.io/docs/lookup-bvn#test-credentials-for-sandbox-1)
+
+Kindly use this Test BVN in sandbox Environment
+
+bvn = `22222222222`

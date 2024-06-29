@@ -1,31 +1,147 @@
 ---
 title: "Lookup CAC (Basic, Advance)"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "This endpoint allows developers to fetch CAC information of customers' company/organization.  
+CAC is a certificate that shows evidence of the company's existence."
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
+> ## 📘 NOTE
+> 
+> There are two payload responses for this endpoint based on the details returned
+> 
+> -   **Basic**
+> -   **Advance**
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+## CAC Basic
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
 
-With Dojah, you can:
+```text [GET]
+{{baseUrl}}/api/v1/kyc/cac
+```
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+### Header
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
 
-Get started today and experience the power of Dojah!
+### Query parameter
+
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| rc\_number \* | string | RC number | required |
+| company\_name \* | string | name of company | required |
+
+### Sample response
+
+```json Response
+{
+  "entity": {
+    "rc_number": "1261103",
+    "company_name": "ADAFRUIT LIMITED",
+    "address": "NO 37 GIBSON ROAD UBEJI",
+    "date_of_registration": "2015-05-15",
+    "type_of_company": "COMPANY"
+  }
+}
+```
+
+## CAC Advance
+
+This endpoint allows one to resolve premium CAC details using RC number, It returns information on company's board of directors
+
+### Request
+
+```text [GET]
+{{baseUrl}}/api/v1/kyc/cac/advance
+```
+
+### Header
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
+
+### Query parameter
+
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| rc \* | string | RC number | required |
+| class \* | string | class value is **premium** | required |
+| type \* | string | type can have the value of **co, bn, it** | required |
+
+### Sample response
+
+```json [200]
+{
+  "entity": {
+    "Branch_Address": "No 42, Ewegbemi Bustop, Command Road, Lagos State.",
+    "City": "",
+    "Classification": "BUSINESS NAME",
+    "Date_of_Registration": "2018-09-18T20:57:01.413+00:00",
+    "Email": "",
+    "Head_Office_Address": "",
+    "LGA": "Alimosho",
+    "Name_of_Company": "HAPPY DELI GRILLS",
+    "Number_of_Affiliates": "1",
+    "RC_Number": "2653386",
+    "Share_capital": "",
+    "Share_capital_in_words": "",
+    "State": "LAGOS",
+    "Status": "INACTIVE",
+    "Type_of_Company": "BUSINESS_NAME",
+    "affiliates": [
+      {
+        "accreditationnumber": "111111111",
+        "address": "No 12, Adejumo Street, Last Bus stop, Meiran, Lagos State. ",
+        "affiliateType": "PROPRIETOR",
+        "city": "Lagos",
+        "companyId": 4927923,
+        "companyName": "Dojah Inc",
+        "companyRcNumber": "11111111",
+        "corporateName": "Dojah Inc",
+        "corporateRcNumber": "1111111",
+        "corporationName": "Dojah Inc",
+        "countryName": "NIGERIA",
+        "dateOfAppointment": "06-04-2018",
+        "dateOfBirth": "01-04-1986",
+        "dateOfTermination": null,
+        "email": "olaofeyetunde@yahoo.com",
+        "firstname": "Yetunde ",
+        "formerFirstName": null,
+        "formerName": null,
+        "formerNationality": null,
+        "formerOtherName": null,
+        "formerSurname": null,
+        "gender": "FEMALE",
+        "id": 11547811,
+        "identityNumber": "A25182063",
+        "identityType": "Permanent Voters' Card",
+        "isChairman": false,
+        "isCorporate": false,
+        "lga": null,
+        "name": "Olaofe, Yetunde  Ayobami",
+        "nationality": "Nigerian",
+        "occupation": "Businesswoman",
+        "otherDirectorshipDetails": null,
+        "othername": "Ayobami",
+        "phoneNumber": "07068774478",
+        "postcode": null,
+        "rcNumber": null,
+        "searchScore": null,
+        "shareAllotted": null,
+        "shareType": null,
+        "state": "LAGOS",
+        "status": "ACTIVE",
+        "streetNumber": null,
+        "surname": "Olaofe",
+        "uuid": null
+      }
+    ],
+    "imageReport": "https://dojah.s3.us-east-2.amazonaws.com/images/9cb091fe39054148a8e2b07177b7f408.pdf"
+  }
+}
+```

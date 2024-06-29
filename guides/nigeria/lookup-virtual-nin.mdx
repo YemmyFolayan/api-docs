@@ -1,31 +1,61 @@
 ---
 title: "Virtual NIN Lookup"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "This endpoint verifies a customer's identity using their uniquely generated Virtual NIN (vNIN). The vNIN is generated from NIMC's mobile app"
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+### How does this works
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+-   The NIN holder can generate their virtual NIN via the NIMC Mobile App or the NIMC USSD code - \_346\_3\_NIN\_EnterpriseCode#.
+-   Dojah’s Enterprise code - **1138183**
+-   The generated VNIN is valid for only 72 hours
+-   The vNIN is designed to replace the 11-digit NIN for everyday usage. It is a unique 16-character alphanumeric token comprising 12 digits, sandwiched between 4 alphabets, two on each end, with no correlation to the issuer’s Raw NIN. An example of a vNIN is: AB012345678910YZ.
+-   According to NIMC, The VNIN is not to be stored in any database but only used for verifying the NIN holder.
 
-With Dojah, you can:
+### Request
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+```text [GET]
+{{baseURL}}/api/v1/kyc/vnin
+```
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+### Header
 
-Get started today and experience the power of Dojah!
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
+
+### Query parameters
+
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| vnin \* | string | A uniquely generated virtual nin | required |
+
+### Sample response
+
+```json Response
+{
+    "entity": {
+        "vnin": "AB012345678910YZ",
+        "firstname": "John",
+        "middlename": "Doe",
+        "surname": "Alamutu",
+        "user_id": "WXABCD-1234",
+        "gender": "M",
+        "mobile": "08012345678",
+        "dateOfBirth": "YYYY-MM-DD",
+        "photo": "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgc..."
+    }
+}
+```
+
+### 
+
+Test Credentials for Sandbox
+
+[](https://api-docs.dojah.io/docs/lookup-nuban#test-credentials-for-sandbox)
+
+Sample = `AB012345678910YZ`
+
