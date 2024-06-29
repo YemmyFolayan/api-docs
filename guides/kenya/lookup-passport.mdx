@@ -1,31 +1,51 @@
 ---
 title: "Lookup Kenya Passport"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "This endpoint allows you to Lookup a Kenya National ID."
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
+### Request
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+```text [GET]
+{{baseURL}}/api/v1/ke/kyc/passport
+```
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+### Header
 
-With Dojah, you can:
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod_sk_1T1eSavlZxy02OT3OWlvbxK4G |
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+### Query params
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+| Key | Type | Description |  |
+| --- | --- | --- | --- |
+| id_number\* | string | The Passport Number | required |
 
-Get started today and experience the power of Dojah!
+### Sample response
+
+```json Response
+{
+  "entity": {
+    "address": "BOX 12345-00800 NAIROBI KAREN KAREN LOCATION - LANGATA DIVISION - KIBERA DISTRICT - STAREHE",
+    "citizenship": "",
+    "date_of_birth": "2000-09-20",
+    "date_of_birth_from_passport": "",
+    "date_of_issue": "2019-02-14",
+    "expiration_date": "2022-02-13",
+    "first_name": "Joe",
+    "gender": "M",
+    "last_name": "Leo",
+    "middle_name": "Doe",
+    "occupation": "",
+    "passport_number": "A00000000",
+    "phone_number": "Not Available",
+    "phone_number2": "Not Available",
+    "photo": "/9j/4AAQSkZJRgABAQABLAEsAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQF",
+    "photo_from_passport": "/9j/4AAQSkZJRgABAQABLAEsAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQO",
+    "place_of_birth": "NAIROBI\nDISTRICT - STAREHE"
+  }
+}
+```

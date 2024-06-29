@@ -18,14 +18,14 @@ This endpoint allows you to Subscribe to Dojah's webhook service
 | Parameter | Type | Description |
 | --- | --- | --- |
 | AppId | string | you would need to create an app to get your app ID |
-| Authorization | string | private secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
+| Authorization | string | private secret key e.g prod_sk_1T1eSavlZxy02OT3OWlvbxK4G |
 
 ### [](https://api-docs.dojah.io/docs/subscribe-to-services#body)
 
-| Body | Type | Description |
+| Key | Type | Description |
 | --- | --- | --- |
 | webhook | string | **webhook** is the webhook url that allows Dojah to send (i.e “push”) data to your application as soon as an event occurs, Create a Test webhook url on [webhook.site](https://webhook.site/). Example [https://webhook.site/db8ad2b6-91b6-485b-9761-e546b540ccf6](https://webhook.site/db8ad2b6-91b6-485b-9761-e546b540ccf6) |
-| service | string | Type of services \[ **sms**, **ngn\_wallet**, **kyc\_widget**, **address**, , **AML Monitoring**\]\] |
+| service | string | Type of services \[ **sms**, **ngn_wallet**, **kyc_widget**, **address**, , **AML Monitoring**\]\] |
 
 ### [](https://api-docs.dojah.io/docs/subscribe-to-services#response)
 
@@ -63,11 +63,11 @@ The webhook content description
 | environment | string | environment values are **production, sandbox** |
 | status | string | Event status values are **COMPLETED, PENDING, FAILED** |
 | event | string | event values are **deposit, transfer** |
-| event\_type | string | event\_type values are **"wallet:event:inter", "wallet:event:intra"** |
+| event_type | string | event_type values are **"wallet:event:inter", "wallet:event:intra"** |
 
 > ## 📘
 > 
-> How to recieve kyc\_widget webhook notification
+> How to recieve kyc_widget webhook notification
 > 
 > Set In Config object Kindly set **webhook** object value to true (Boolean)
 > 
