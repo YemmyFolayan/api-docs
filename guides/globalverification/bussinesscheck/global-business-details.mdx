@@ -1,31 +1,120 @@
 ---
 title: "Global Business Details"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "Get details of a particular business"
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+### Request
+```text [GET]
+{{baseUrl}}/api/v1/kyb/business/detail
+```
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+### Header
 
-With Dojah, you can:
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+### Query parameter
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| international\_number \* | string | International number of company | required |
+| country\_code \* | string | Country Code of business country | required |
 
-Get started today and experience the power of Dojah!
+### Sample response
+
+```json Response
+{
+    "entity": {
+        "name": "JOHN DOE INC",
+        "internationalNumber": "1769635",
+        "localNumber": "C1769635",
+        "dateCreated": "2022-01-24T00:00:00.000Z",
+        "address": "500 S BUENA VISTA ST BURBANK CA 91521",
+        "paidShareCapital": "10000000 NGN",
+        "sharesValue": "0.01 NGN",
+        "sharesIssued": "10000000",
+        "activityDescription": "To be in the business of providing Demo services.",
+        "oldInternationalNumber": "1769635",
+        "country": {
+            "name": "California",
+            "code": "us-ca",
+            "currency": "USD",
+            "sources": [
+                {
+                    "url": "https://businesssearch.sos.ca.gov/",
+                    "name": "California Secretary of State"
+                }
+            ]
+        },
+        "type": {
+            "type": "Private company limited by shares",
+            "isIndividual": false
+        },
+        "statuses": [
+            {
+                "providerId": "Active",
+                "providerName": "Active"
+            }
+        ],
+        "activities": [
+            {
+                "providerId": "143269",
+                "providerName": "Other personal services activities",
+                "createdAt": "2021-11-07T13:47:47.959002+00:00",
+                "type": {
+                    "id": 1,
+                    "name": "Primary"
+                }
+            }
+        ],
+        "parentCountry": null,
+        "addresses": [
+            {
+                "address": "500 S BUENA VISTA ST BURBANK CA 91521",
+                "companies": []
+            }
+        ],
+        "persons": [
+            {
+                "sourceNum": 1,
+                "person": {
+                    "id": null,
+                    "name": null,
+                    "countryId": 24,
+                    "occupation": null,
+                    "nationality": null,
+                    "address": null,
+                    "countryOfResidence": null,
+                    "honorific": null,
+                    "number": "1811271",
+                    "isForeign": null,
+                    "hideAddress": null,
+                    "email": null,
+                    "phone": null,
+                    "countryCode": "us-ca"
+                },
+                "role": {
+                    "id": 60318,
+                    "name": "Agent",
+                    "providerId": null,
+                    "isInactive": null
+                },
+                "naturesOfControl": [],
+                "personShares": []
+            }
+        ],
+        "companyContacts": {
+            "email": [
+                "adm***********"
+            ]
+        },
+        "personsCount": "1",
+        "companyContactsCount": "1"
+    }
+}
+```

@@ -1,31 +1,72 @@
 ---
 title: "Email Check"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "Submit an Email Address for Check"
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+```text [GET]
+{{baseUrl}}/api/v1/fraud/email
+```
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+### Header
 
-With Dojah, you can:
+| Header | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+### Query parameter
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+| Key | Type | Description |
+| --- | --- | --- |
+| email\_address | string | email of user |
 
-Get started today and experience the power of Dojah!
+### Sample response
+
+```json Response
+{
+  "entity": {
+    "email": "johndoe@gmail.com",
+    "reputation": "high",
+    "suspicious": false,
+    "references": 178,
+    "details": {
+      "blacklisted": false,
+      "malicious_activity": false,
+      "malicious_activity_recent": false,
+      "credentials_leaked": true,
+      "credentials_leaked_recent": false,
+      "data_breach": true,
+      "first_seen": "07/01/2008",
+      "last_seen": "03/22/2021",
+      "domain_exists": true,
+      "domain_reputation": "n/a",
+      "new_domain": false,
+      "days_since_domain_creation": 9474,
+      "suspicious_tld": false,
+      "spam": false,
+      "free_provider": true,
+      "disposable": false,
+      "deliverable": true,
+      "accept_all": false,
+      "valid_mx": true,
+      "primary_mx": "gmail-smtp-in.l.google.com",
+      "spoofable": true,
+      "spf_strict": true,
+      "dmarc_enforced": false,
+      "profiles": [
+        "aboutme",
+        "flickr",
+        "angellist",
+        "foursquare",
+        "myspace",
+        "twitter",
+        "vimeo",
+        "linkedin"
+      ]
+    }
+  }
+}
+```

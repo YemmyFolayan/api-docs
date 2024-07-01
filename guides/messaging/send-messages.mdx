@@ -1,31 +1,101 @@
 ---
 title: "Send Messages"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "This endpoint allows you to deliver your transactional messages to your users"
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
+> ## 📘 NOTE
+> 
+> You would need to register a sender ID with the endpoint mentioned below. All messages sent before then will be delivered with the default sender ID
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
+### Request
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+```text [POST]
+{{baseUrl}}api/v1/messaging/sms
+```
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+### Header
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
 
-With Dojah, you can:
+### Body parameter
+| Parameter | Type | Description |
+| --- | --- | --- |
+| destination | number | Phone number of recipient |
+| message | string | body of message |
+| channel | string | can be either whatsapp or sms |
+| sender\_id | string | Sender ID |
+| priority | boolean | Indicate if you want to send in priority mode. Default is false |
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+> ## 📘 NOTE
+> 
+> There is the priority feature. You can automatically resend messages via any of the channels if one doesn't get delivered. If the priority is set to true, the default setup is sms, and then whatsapp. You can choose to set it however way you want in the channel parameter
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+### Sample response
 
-Get started today and experience the power of Dojah!
+```json Response
+{
+    "entity": {
+        "status": true,
+        "mobile": "2348054810238",
+        "message_id": "true_2348468713228@c.us_3EB092F69064FG74BC76",
+        "reference_id": "81512"
+    }
+}
+```
+
+## Request Sender ID
+
+Register your Sender ID with this endpoint, you will get an email once it has been approved, all messages sent before then will be delivered with the default sender ID
+
+### Request
+
+```text [POST]
+{{baseUrl}}api/v1/messaging/sender_id
+```
+
+### Body parameter
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| sender\_id | string | Sender ID you wish to register, should be less than 11 Characters |
+
+> ## 📘 Sender ID
+> 
+> Kindly Note that you can only register your sender Id on production only.
+
+### Sample response
+
+```json Response
+{
+  "entity": {
+    "message": "Sender ID Request Successful, you will get an email once its Activated."
+  }
+}
+```
+
+## Fetch Sender IDs
+
+Fetch the list of all your Sender IDs
+
+### Request
+
+```text [GET]
+{{baseUrl}}api/v1/messaging/sender_ids
+```
+
+### Sample response
+
+```json Response
+{
+    "entity": [
+        {
+            "sender_id": "Dojah",
+            "activated": true,
+            "createdAt": "2020-10-30T09:54:17.145Z"
+        }
+    ]
+}
+```

@@ -1,31 +1,52 @@
 ---
 title: "Validate BVN"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "The BVN Match service allows you to verify that an account number, first name, last name and middle name of a user matches their BVN."
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
+## Validate BVN
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+> ## 📘 NOTE This endpoint returns boolean values for these optional parameters: first name, last name, and date of birth.
+> 
+> Kindly use this Test BVN in sandbox Environment : 22222222222
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+### Request
 
-With Dojah, you can:
+```text [GET]
+{{baseUrl}}/api/v1/kyc/bvn
+```
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+### [](https://api-docs.dojah.io/docs/lookup-ghana-tin#query-parameters)
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+| Parameters | Type | Description |  |
+| --- | --- | --- | --- |
+| bvn \* | string | A valid bvn | required |
+| first name | string | first name of bvn holder | optional |
+| last name | string | last name of bvn holder | optional |
+| dob | string | date of birth of bvn holder in yyyy-mm-dd | optional |
 
-Get started today and experience the power of Dojah!
+
+
+#### Sample response
+```json [200]
+{
+    "entity": {
+        "bvn": {
+            "value": "23456789012",
+            "status": true
+        },
+        "first_name": {
+            "confidence_value": 100,
+            "status": true
+        }
+    }
+}
+```
+ 
+
+```json [400]
+{
+    "error": "BVN not found"
+}
+```

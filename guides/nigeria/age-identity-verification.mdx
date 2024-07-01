@@ -1,31 +1,41 @@
 ---
 title: "Age/Identity Verification"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "Verify end users age or personal information through BVN, account numbers etc."
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
+Age Identity and Verification allows you to confirm and ascertain information summitted by your end users.
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+With this endpoint, Dojah can help you verify first name, middle name by simply adding it to the request body
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+Information Required; Phone Number OR Account Number OR BVN
 
-With Dojah, you can:
+To Lookup Age Identity and Verification;
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+```text [GET]
+{{baseUrl}}/api/v1/kyc/age_verification
+```
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+| GET Parameter | Type | Description |
+| --- | --- | --- |
+| mode _required_ | _string_ | _phone\_number_ ,_account\_number_ or _bvn_ |
+| strict | _bool_ | default is _false_ |
+| first\_name | _string_ | First name |
+| last\_name | _string_ | Last name |
+| dob | _string_ | Date of Birth |
+| bvn | _string_ | Include BVN if mode is selected |
+| account\_number | _string_ | Include if account\_number mode is selected |
+| bank\_code | _string_ | Include if account\_number mode is selected |
+| phone\_number | _string_ | Include if phone\_number mode is selected |
 
-Get started today and experience the power of Dojah!
+```json Response
+{
+  "entity": {
+    "first_name": "ADEOLA",
+    "last_name": "SEMIU",
+    "date_of_birth": "1993-06-10",
+    "verification": true
+  }
+}
+```

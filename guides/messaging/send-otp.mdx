@@ -1,31 +1,55 @@
 ---
-title: "Document Analysis"
+title: "Send OTP"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "Deliver OTPs to your users via multiple channels such as Whatsapp, voice, sms and Email"
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+> ## 📘 NOTE
+> 
+> You would need to register a sender ID with the endpoint mentioned below. All messages sent before then will be delivered with the default sender ID
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+### Request
 
-With Dojah, you can:
+```text [POST]
+{{baseUrl}}api/v1/messaging/otp
+```
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+### Header
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
 
-Get started today and experience the power of Dojah!
+### Body parameter
+
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| sender\_id \* | string | registered Sender ID | required |
+| destination | string | Phone number of recipient for Whatsapp, Voice and SMS | required |
+| channel \* | string | can be either whatsapp, sms, voice, and email | required |
+| email | string | Email Recipient for Email OTP | required |
+| expiry \* | integer | number of minutes before token becomes Invalid. Default is 10 | optional |
+| length | integer | length of token(4 to 10 characters), default is 6 characters | optional |
+| priority | boolean | indicate if you want to send in priority mode. Default is false | optional |
+| otp | integer | length of token should be between 4-10 digits which is optional | optional |
+
+> ## 📘NOTE
+> 
+> There is the priority feature. You can automatically resend messages via any of the channels if one doesn't get delivered. If the priority is set to true, the default setup is sms, whatsapp, and then voice. You can choose to set it however way you want in the channel parameter.
+> 
+> You can decide to use the otp parameter send otp, instead of the generated one.
+
+### Sample response
+
+```json Response
+{
+  "entity": {
+    "reference_id": "edd37ab5-48ec-4481-8cf9-ba5chu7c41f7",
+    "destination": "2348012345678",
+    "status": "SMS sent successfully"
+  }
+}
+```

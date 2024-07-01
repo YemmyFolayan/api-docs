@@ -1,31 +1,44 @@
 ---
 title: "Angola National ID 🇦🇴"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "This endpoint allows you to Lookup a South African National ID."
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+### Request
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+```text [GET]
+{{baseURL}}/api/v1/ao/kyc/nin
+```
 
-With Dojah, you can:
+### Header
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+### Query parameter
 
-Get started today and experience the power of Dojah!
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| id \* | string | Angolan National ID Number | required |
+
+### Sample request
+
+```json Response
+{
+    "entity": {
+       "id_number": "001234567RY987",
+       "first_name": "JOHN FRANCO",
+       "last_name": "SAMUEL DOE",
+       "mobile": "930123456",
+       "gender": "MALE",
+       "dob": "",
+       "image": "/9j/4AAQSkZJRgABAQAAAQABAAD/...",
+       "address": "RUA",
+       "expiry_date": 1704297141000
+    }
+}
+```

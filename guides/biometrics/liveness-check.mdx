@@ -1,31 +1,117 @@
 ---
 title: "Liveness Check"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "Performs a liveness check on an Image."
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
+```text [POST]
+{{baseUrl}}/api/v1/ml/liveness/
+```
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+Liveness ID Verification
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+| POST Parameter | Type | Description |
+| --- | --- | --- |
+| image | string | `Image format should be in Base64` |
 
-With Dojah, you can:
+> ## 📘 NB : liveness\_probability above 50 means liveness is confirmed
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
-
-Dojah is your trusted partner in building a secure and compliant future for your business.
-
-Get started today and experience the power of Dojah!
+```json Response
+{
+    "entity":{
+       "liveness": {
+            "liveness_check": false,
+            "liveness_probability": 0.014614949759561568
+        },
+        "face": {
+            "face_detected": true,
+            "message": "face detected",
+            "multiface_detected": false,
+            "details": {
+                "age_range": {
+                    "low": 25,
+                    "high": 35
+                },
+                "smile": {
+                    "value": false,
+                    "confidence": 92.67727661132812
+                },
+                "gender": {
+                    "value": "Female",
+                    "confidence": 99.92608642578125
+                },
+                "eyeglasses": {
+                    "value": false,
+                    "confidence": 96.146484375
+                },
+                "sunglasses": {
+                    "value": false,
+                    "confidence": 99.99609375
+                },
+                "beard": {
+                    "value": false,
+                    "confidence": 85.18626403808594
+                },
+                "mustache": {
+                    "value": false,
+                    "confidence": 96.13561248779297
+                },
+                "eyes_open": {
+                    "value": true,
+                    "confidence": 88.61351776123047
+                },
+                "mouth_open": {
+                    "value": false,
+                    "confidence": 76.0062484741211
+                },
+                "emotions": [
+                    {
+                        "type": "CALM",
+                        "confidence": 81.77631378173828
+                    },
+                    {
+                        "type": "FEAR",
+                        "confidence": 6.811796188354492
+                    },
+                    {
+                        "type": "SURPRISED",
+                        "confidence": 6.772216320037842
+                    },
+                    {
+                        "type": "SAD",
+                        "confidence": 6.691151142120361
+                    },
+                    {
+                        "type": "ANGRY",
+                        "confidence": 2.304255723953247
+                    },
+                    {
+                        "type": "DISGUSTED",
+                        "confidence": 2.147843599319458
+                    },
+                    {
+                        "type": "HAPPY",
+                        "confidence": 1.2251189947128296
+                    },
+                    {
+                        "type": "CONFUSED",
+                        "confidence": 0.9095264673233032
+                    }
+                ]
+            },
+            "quality": {
+                "brightness": 65.93645477294922,
+                "sharpness": 97.45164489746094
+            },
+            "confidence": 99.99896240234375,
+            "bounding_box": {
+                "width": 0.4954420328140259,
+                "height": 0.39241859316825867,
+                "left": 0.27790528535842896,
+                "top": 0.3333175778388977
+            }
+        }
+    }
+}
+```

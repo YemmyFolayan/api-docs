@@ -4,28 +4,204 @@ mode: "wide"
 description: "Sample Guides, whatever, Introduction to guides and whatnot"
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
+This is an Identity verification service for the Canada, It uses Credit Reference Data, Telephone Directory, Passports and ID Card.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
+### Request
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+```text [POST]
+{{baseUrl}}/api/v1/ca/kyc
+```
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+### Header
+| Header | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
 
-With Dojah, you can:
+### Body parameter
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| first\_name \* | string |  | required |
+| last\_name \* | string |  | required |
+| middle\_name | string |  |  |
+| date\_of\_birth | string |  |  |
+| gender \* | string | M,F | required |
+| street\_name \* | string |  | required |
+| house\_number \* | string |  | required |
+| city \* | string |  | required |
+| post\_code \* | string |  | Required |
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+### Sample response
 
-Get started today and experience the power of Dojah!
+```json Response
+
+{
+  "entity": {
+	"creditReference": {
+		"creditReferenceRecords": {
+			"creditReferenceRecordList": [{
+					"addresses": {
+						"addressList": [{
+								"countryCode": "CAN",
+								"postTown": "Edmonton",
+								"postcode": "T5J 2R4",
+								"premise": "3688",
+								"region": "AB",
+								"street": "184th Street"
+							}
+						]
+					},
+					"person": {
+						"dateOfBirth": "1969-12-12",
+						"name": {
+							"forename": "Robert",
+							"surname": "Beck"
+						}
+					}
+				}
+			]
+		},
+		"creditReferenceSummary": {
+			"idVerified": "1"
+		},
+		"summary": {
+			"decision": "1",
+			"decisionReasons": {
+				"decisionReasonList": [{
+						"decision": "1",
+						"element": "CreditReferenceSummary/IDVerified"
+					}, {
+						"decision": "1",
+						"element": "CreditReferenceRecord/Person/Name/Forename"
+					}, {
+						"decision": "1",
+						"element": "CreditReferenceRecord/Person/Name/Surname"
+					}, {
+						"decision": "1",
+						"element": "CreditReferenceRecord/Person/DateOfBirth"
+					}, {
+						"decision": "1",
+						"element": "CreditReferenceRecord/Addresses/Address/@Current"
+					}, {
+						"decision": "1",
+						"element": "CreditReferenceRecord/Addresses/Address/Premise"
+					}, {
+						"decision": "1",
+						"element": "CreditReferenceRecord/Addresses/Address/Street"
+					}, {
+						"decision": "1",
+						"element": "CreditReferenceRecord/Addresses/Address/PostTown"
+					}, {
+						"decision": "1",
+						"element": "CreditReferenceRecord/Addresses/Address/Postcode"
+					}
+				]
+			}
+		}
+	},
+	"searchRef": "37873fcc-6281-4913-b6df-5f26497abfab",
+	"summary": {
+		"decisionMatrix": {
+			"code": "******",
+			"decision": {
+				"outcome": "1",
+				"reason": "Individual has a full match to forename surname premise postcode with ID verified and DOB"
+			},
+			"name": "****************",
+			"rules": {
+				"ruleList": [{
+						"id": "CreditReference Datablock",
+						"name": "BSO/CAN/Bespoke/Nam/NameDOB",
+						"outcome": "1",
+						"reason": "Individual has a full match to forename surname and DOB"
+					}, {
+						"id": "Telephony Datablock",
+						"name": "BSO/CAN/Bespoke/NamPremPC/ID/90/NameAddress",
+						"outcome": "1",
+						"reason": "Individual has a full match to forename surname premise postcode"
+					}
+				]
+			}
+		},
+		"kycSummary": {
+			"address": {
+				"count": "4"
+			},
+			"alerts": {
+				"count": "0"
+			},
+			"dateOfBirth": {
+				"count": "3"
+			},
+			"fullNameAndAddress": {
+				"count": "1"
+			},
+			"surnameAndAddress": {
+				"count": "0"
+			}
+		},
+		"reportSummary": {
+			"datablocksSummary": {
+				"datablockSummaryList": [{
+						"decision": "1",
+						"name": "CreditReference"
+					}, {
+						"decision": "1",
+						"name": "Telephony"
+					}
+				]
+			}
+		}
+	},
+	"telephony": {
+		"summary": {
+			"decision": "1",
+			"decisionReasons": {
+				"decisionReasonList": [{
+						"decision": "1",
+						"element": "TelephonyRecord/Person/Name/Forename"
+					}, {
+						"decision": "1",
+						"element": "TelephonyRecord/Person/Name/Surname"
+					}, {
+						"decision": "1",
+						"element": "TelephonyRecord/Address/Premise"
+					}, {
+						"decision": "1",
+						"element": "TelephonyRecord/Address/Postcode"
+					}
+				]
+			}
+		},
+		"telephonyRecord": {
+			"address": {
+				"countryCode": "CAN",
+				"current": "1",
+				"postTown": "Edmonton",
+				"postcode": "T5J 2R4",
+				"premise": "3688",
+				"region": "AB",
+				"street": "184th Street"
+			},
+			"person": {
+				"name": {
+					"forename": "Robert",
+					"surname": "Beck"
+				}
+			},
+			"telephones": {
+				"telephoneList": [{
+						"customerType": "R",
+						"listingType": "DQ",
+						"number": "780-916-3124",
+						"type": "U"
+					}
+				]
+			}
+		},
+		"type": "Result"
+	}
+  }
+}
+```

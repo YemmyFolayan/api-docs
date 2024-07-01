@@ -1,31 +1,44 @@
 ---
 title: "Business Address Verification"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "Submit an address for physical verification of a business in Nigeria"
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+```
+{{baseUrl}}/api/v1/kyc/address/business
+```
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+### Header
 
-With Dojah, you can:
+| Header | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+### Body parameter
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+| Key | Type | Description |
+| --- | --- | --- |
+| business\_name | string | Name of business |
+| business\_mobile | string | Office mobile number of the business |
+| first\_name | string | First name of business owner |
+| last\_name | string | Last name of business owner |
+| mobile | string | Mobile number of business owner |
+| street | string | House number, street name of the business |
+| landmark | string | The closest landmark to the location |
+| lga | string | LGA |
+| city | string | City |
+| state | string | State |
 
-Get started today and experience the power of Dojah!
+### Sample response
+
+```json Response
+{
+    "entity": {
+        "status":"pending" ,
+        "reference_id": "69e10264-4b90-64fe-b4b7-c9dddafd0241"
+    }
+}
+```

@@ -1,31 +1,249 @@
 ---
 title: "Fetch Banks"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "
+This endpoint allow you to get Nigerian banks and their codes"
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
+### Request
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+```text [GET]
+{{baseUrl}}/api/v1/general/banks
+```
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+### Header
 
-With Dojah, you can:
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+### Sample response
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
-
-Get started today and experience the power of Dojah!
+```json Response
+{
+  "entity": [
+    {
+      "name": "Parallex MFB",
+      "code": "015"
+    },
+    {
+      "name": "Globus Bank",
+      "code": "00103"
+    },
+    {
+      "name": "NOW NOW",
+      "code": "075"
+    },
+    {
+      "name": "ALAT by WEMA",
+      "code": "035A"
+    },
+    {
+      "name": "Eyowo",
+      "code": "50126"
+    },
+    {
+      "name": "Lagos Building Investment Company Plc.",
+      "code": "90052"
+    },
+    {
+      "name": "Zenith Bank",
+      "code": "057"
+    },
+    {
+      "name": "Wema Bank",
+      "code": "035"
+    },
+    {
+      "name": "VFD",
+      "code": "566"
+    },
+    {
+      "name": "Unity Bank",
+      "code": "215"
+    },
+    {
+      "name": "Union Bank of Nigeria",
+      "code": "032"
+    },
+    {
+      "name": "United Bank For Africa",
+      "code": "033"
+    },
+    {
+      "name": "Trustbond",
+      "code": "018"
+    },
+    {
+      "name": "Titan Bank",
+      "code": "102"
+    },
+    {
+      "name": "Teasy",
+      "code": "004"
+    },
+    {
+      "name": "TCF MFB",
+      "code": "51211"
+    },
+    {
+      "name": "TAJ Bank",
+      "code": "302"
+    },
+    {
+      "name": "Suntrust Bank",
+      "code": "100"
+    },
+    {
+      "name": "Sterling Bank",
+      "code": "232"
+    },
+    {
+      "name": "Standard Chartered Bank",
+      "code": "068"
+    },
+    {
+      "name": "Stanbic IBTC Bank",
+      "code": "221"
+    },
+    {
+      "name": "Sparkle Microfinance Bank",
+      "code": "51310"
+    },
+    {
+      "name": "Rubies MFB",
+      "code": "125"
+    },
+    {
+      "name": "Providus Bank",
+      "code": "101"
+    },
+    {
+      "name": "Polaris Bank",
+      "code": "076"
+    },
+    {
+      "name": "Parallex Bank",
+      "code": "526"
+    },
+    {
+      "name": "Parkway - ReadyCash",
+      "code": "311"
+    },
+    {
+      "name": "PagaTech",
+      "code": "009"
+    },
+    {
+      "name": "One Finance",
+      "code": "565"
+    },
+    {
+      "name": "NPF",
+      "code": "002"
+    },
+    {
+      "name": "NOVA",
+      "code": "105"
+    },
+    {
+      "name": "Mutual Benefits",
+      "code": "107"
+    },
+    {
+      "name": "Kuda Bank",
+      "code": "50211"
+    },
+    {
+      "name": "Keystone Bank",
+      "code": "082"
+    },
+    {
+      "name": "Jaiz Bank",
+      "code": "301"
+    },
+    {
+      "name": "Heritage Bank",
+      "code": "030"
+    },
+    {
+      "name": "Hasal Microfinance Bank",
+      "code": "50383"
+    },
+    {
+      "name": "Hackman Microfinance Bank",
+      "code": "51251"
+    },
+    {
+      "name": "Guaranty Trust Bank",
+      "code": "058"
+    },
+    {
+      "name": "FSDH Merchant Bank Limited",
+      "code": "501"
+    },
+    {
+      "name": "First Bank of Nigeria",
+      "code": "011"
+    },
+    {
+      "name": "Fidelity Bank",
+      "code": "070"
+    },
+    {
+      "name": "FETS",
+      "code": "003"
+    },
+    {
+      "name": "First City Monument Bank",
+      "code": "214"
+    },
+    {
+      "name": "Ekondo Microfinance Bank",
+      "code": "562"
+    },
+    {
+      "name": "Ecobank Nigeria",
+      "code": "050"
+    },
+    {
+      "name": "Covenant MFB",
+      "code": "052"
+    },
+    {
+      "name": "Citibank Nigeria",
+      "code": "023"
+    },
+    {
+      "name": "CEMCS Microfinance Bank",
+      "code": "50823"
+    },
+    {
+      "name": "Bridgeway MFB",
+      "code": "363"
+    },
+    {
+      "name": "Bowen Microfinance Bank",
+      "code": "50931"
+    },
+    {
+      "name": "BOSAK",
+      "code": "104"
+    },
+    {
+      "name": "ASO Savings and Loans",
+      "code": "401"
+    },
+    {
+      "name": "Access Bank (Diamond)",
+      "code": "063"
+    },
+    {
+      "name": "Access Bank",
+      "code": "044"
+    }
+  ]
+}
+```

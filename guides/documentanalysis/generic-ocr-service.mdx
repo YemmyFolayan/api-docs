@@ -1,31 +1,73 @@
 ---
 title: "Generic OCR Service"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "To ensure that your customer provides valid Photo ID, Images, and Documents, you can allow them to upload a photo Id, image, and Document which you can pass on to the Dojah for Generic optical character recognition process"
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
+This Easily extract text from images including from those of documents in realtime
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+Generic optical character recognition is a very useful AI model as it detects & extracts text from all types of images with great accuracy.
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+### Request
 
-With Dojah, you can:
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+```text [POST]
+{{baseurl}}/api/v1/ml/ocr/generic
+```
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+### Header
 
-Get started today and experience the power of Dojah!
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
+
+### Body Parameter
+
+| POST Parameter | Type | Description |
+| --- | --- | --- |
+| img  
+_REQUIRED_ | string | Base64 value of the image.
+please do not include the data type  
+example: **data:image/jpeg;base64** |
+
+### Sample response
+
+```json Response
+{
+    "entity": {
+        "data": [
+            "National Identity Management System",
+            "Nimc",
+            "Federal Republic of Nigeria",
+            "National Identification Number Slip (NINS)",
+            "Address:",
+            "Tracking ID:",
+            "S7Y0NYFD7890123",
+            "Surname:",
+            "John",
+            "26 JOHNSON STREET AGODO AREA",
+            "NIN:",
+            "70142123456",
+            "First Name:",
+            "Doe",
+            "Issue Date:",
+            "26/08/2014",
+            "Middle Name: OLA-Doe",
+            "IKOTUN EGBE",
+            "Gender:",
+            "M",
+            "Lagos",
+            "Note: The National Identification Number (NIN) is your identity. It is confidential and may only be released for legitimate transactions.",
+            "You will be notified when your National Identity Card is ready (for any enquiries please contact)",
+            "07040144452, 07040144453,",
+            "National Identity Management Commission",
+            "helpdesk@nimc.gov.ng",
+            "www.nimc.gov.ng",
+            "07040144454",
+            "11. Sokode Crescent, Off Dalaba Street, Zone 5 Wuse, Abuja Nigeria"
+        ]
+    }
+}
+```

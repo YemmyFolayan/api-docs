@@ -1,31 +1,39 @@
 ---
 title: "Screening Info Individual"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "Prevent fraudulent Individuals from your platform by screening by via PEP, OFAC, AML, Sanction and Adverse media across 200+ countries and 42800+ databases"
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
+## AML Screening Individual
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+### Request
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+```text [GET]
+{{baseUrl}}api/v1/aml/screening
+```
 
-With Dojah, you can:
+```json Response
+{
+    "first_name": "John",
+    "middle_name": "Asake",
+    "last_name": "Doe",
+    "date_of_birth": "1997-08-18"
+}
+```
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+### Sample response
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
-
-Get started today and experience the power of Dojah!
+```json Response
+{
+  "matchResults": [
+    {
+      "matchType": "Individual",
+      "name": "John Asake Doe",
+      "nameMatchScore": 80,
+      "profileId": "WC2095906"
+    }
+  ],
+  "uuid": "41f963a5-3d6b-41ec-aac8-bbc5247a4966"
+}
+```

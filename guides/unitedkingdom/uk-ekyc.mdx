@@ -1,31 +1,59 @@
 ---
 title: "UK eKYC"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "Verify a British Identity across multiple sources"
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+This is an Identity verification service for the UK, It uses Electoral Roll, CreditLendersFull(CAIS, Insight), CCJ(Country Court Judgements), BT OSIS, Mortality..
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+The 2+2 Matching uses _Name+Address_ and _Name+DOB_ in various combination to reach a Pass or Fail.
 
-With Dojah, you can:
+### Request
+```text [POST]
+{{baseUrl}}/api/v1/uk/kyc
+```
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+### Header
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+| Header | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
 
-Get started today and experience the power of Dojah!
+### Body Parameter
+
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| first\_name \* | string |  | required |
+| last\_name \* | string |  | required |
+| middle\_name | string |  |  |
+| date\_of\_birth \* | string |  | required |
+| gender \* | string | M,F | required |
+| country \* | string | GBR | required |
+| street\_name \* | string |  | required |
+| house\_number \* | string |  |  |
+| post\_code \* | string |  | Required |
+
+### Sample response
+
+```json Response
+{
+  "entity": {
+    "interpretResult": "Pass",
+    "message": "Matching performed using 11,8 sources as per profile",
+    "rawResponse": [
+      {
+        "AddressMatch": "NoMatch",
+        "DataSource": "Resident Roll",
+        "DobMatch": "Partial",
+        "FirstNameMatch": "Initial",
+        "SurnameMatch": "Full"
+      }
+    ],
+    "transactionResult": "Success"
+  }
+}
+```
+

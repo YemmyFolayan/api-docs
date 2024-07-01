@@ -1,31 +1,69 @@
 ---
 title: "IP Screening"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "Submit an IP Address"
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
+```text [GET]
+{{baseUrl}}/api/v1/fraud/ip
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+```
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+### Header
 
-With Dojah, you can:
+| Header | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+### Query parameter
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+| Key | Type | Description |
+| --- | --- | --- |
+| ip\_address | string |  |
 
-Get started today and experience the power of Dojah!
+### Sample response
+
+```json Response
+
+{
+  "entity": {
+    "report": {
+      "ip": "2.58.56.101",
+      "blacklists": {
+        "detections": 11,
+        "engines_count": 85,
+        "detection_rate": "13%",
+        "scantime": "0.92"
+      },
+      "information": {
+        "reverse_dns": "powered.by.rdp.sh",
+        "continent_code": "EU",
+        "continent_name": "Europe",
+        "country_code": "DE",
+        "country_name": "Germany",
+        "country_currency": "EUR",
+        "country_calling_code": "49",
+        "region_name": "Hamburg",
+        "city_name": "Hamburg",
+        "latitude": 53.575321197509766,
+        "longitude": 10.015339851379395,
+        "isp": "1337 Services GmbH",
+        "asn": "AS210558"
+      },
+      "anonymity": {
+        "is_proxy": false,
+        "is_webproxy": false,
+        "is_vpn": false,
+        "is_hosting": false,
+        "is_tor": true
+      },
+      "risk_score": {
+        "result": 100
+      }
+    },
+    "success": true
+  }
+}
+```

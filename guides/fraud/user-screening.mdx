@@ -1,31 +1,124 @@
 ---
 title: "User Screening"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "Screen your users email, phone, IP Address and AML screening by via PEP, OFAC, , Sanction and Adverse media across 200+ countries and 42800+ databases before onboarding them"
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
+## Request
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
+```text [GET]
+{{baseUrl}}api/v1/fraud/user
+```
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| first\_name \* | string |  | required |
+| last\_name \* | string |  | required |
+| middle\_name | string |  |  |
+| date\_of\_birth \* | string |  | required |
+| email | string |  |  |
+| phone | string |  |  |
+| ip\_address | string |  |  |
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+## Sample response
 
-With Dojah, you can:
-
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
-
-Dojah is your trusted partner in building a secure and compliant future for your business.
-
-Get started today and experience the power of Dojah!
+```json Response
+{
+  "entity": {
+    "overall_risk_score": 80,
+    "phone_check_result": {
+      "account_details_registered": [
+        "skype",
+        "angelist",
+        "instagram"
+      ],
+      "carrier": "T-MOBILE USA, INC",
+      "country": "US",
+      "disposable": false,
+      "flags": [],
+      "number": 16502969060,
+      "score": 4,
+      "type": "mobile",
+      "valid": true
+    },
+    "aml_screening_result": [
+      {
+        "match_type": "Individual",
+        "name": "John Asake Doe",
+        "nameMatchScore": 80,
+        "profileId": "WC2095906"
+      }
+    ],
+    "email_check_result": {
+      "account_details_registered": [
+        "skype",
+        "angelist",
+        "instagram"
+      ],
+      "breach_details": {
+        "first_breach": null,
+        "haveibeenpwned_listed": false,
+        "number_of_breaches": 0
+      },
+      "domain_details": {
+        "accept_all": false,
+        "created": "2004-09-27 18:06:20",
+        "custom": true,
+        "disposable": false,
+        "dmarc_enforced": false,
+        "domain": "example.com",
+        "expires": "2023-09-27 18:06:20",
+        "free": false,
+        "registered": true,
+        "registered_to": "NameFind LLC",
+        "registrar_name": "GoDaddy.com, LLC",
+        "spf_strict": false,
+        "suspicious_tld": false,
+        "tld": ".com",
+        "updated": "2022-08-16 04:46:10",
+        "valid_mx": false,
+        "website_exists": true
+      },
+      "deliverable": false,
+      "email": "test@example.com",
+      "score": 4,
+      "type": "mobile",
+      "valid": true
+    },
+    "ip_check_result": {
+      "ip": "2.58.56.101",
+      "blacklists": {
+        "detections": 11,
+        "engines_count": 85,
+        "detection_rate": "13%"
+      },
+      "ip_details": {
+        "reverse_dns": "powered.by.rdp.sh",
+        "continent_code": "EU",
+        "continent_name": "Europe",
+        "country_code": "DE",
+        "country_name": "Germany",
+        "country_currency": "EUR",
+        "country_calling_code": "49",
+        "region_name": "Hamburg",
+        "city_name": "Hamburg",
+        "latitude": 53.575321197509766,
+        "longitude": 10.015339851379395,
+        "isp": "1337 Services GmbH",
+        "asn": "AS210558"
+      },
+      "anonymity": {
+        "is_proxy": false,
+        "is_webproxy": false,
+        "is_vpn": false,
+        "is_hosting": false,
+        "is_tor": true
+      },
+      "risk_score": {
+        "result": 100
+      }
+    }
+  },
+  "uuid": "41f963a5-3d6b-41ec-aac8-bbc5247a4966"
+}
+```
