@@ -1,0 +1,52 @@
+---
+title: "Validate BVN"
+mode: "wide"
+description: "The BVN Match service allows you to verify that an account number, first name, last name and middle name of a user matches their BVN."
+---
+
+## Validate BVN
+
+
+> ## 📘 NOTE This endpoint returns boolean values for these optional parameters: first name, last name, and date of birth.
+> 
+> Kindly use this Test BVN in sandbox Environment : 22222222222
+
+### Request
+
+```text [GET]
+{{baseUrl}}/api/v1/kyc/bvn
+```
+
+### [](https://api-docs.dojah.io/docs/lookup-ghana-tin#query-parameters)
+
+| Parameters | Type | Description |  |
+| --- | --- | --- | --- |
+| bvn \* | string | A valid bvn | required |
+| first name | string | first name of bvn holder | optional |
+| last name | string | last name of bvn holder | optional |
+| dob | string | date of birth of bvn holder in yyyy-mm-dd | optional |
+
+
+
+#### Sample response
+```json [200]
+{
+    "entity": {
+        "bvn": {
+            "value": "23456789012",
+            "status": true
+        },
+        "first_name": {
+            "confidence_value": 100,
+            "status": true
+        }
+    }
+}
+```
+ 
+
+```json [400]
+{
+    "error": "BVN not found"
+}
+```

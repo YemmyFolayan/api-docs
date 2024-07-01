@@ -1,0 +1,41 @@
+---
+title: "Zimbabwe National ID"
+mode: "wide"
+description: "This endpoint allows you to Lookup a Zimbabwe National ID."
+---
+
+### Request
+
+```text [GET]
+{{baseURL}}/api/v1/zw/kyc/nin
+```
+
+### Header
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
+
+### Query parameter
+
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| id  | string | Zimbabwian National ID | required |
+
+### Sample response
+
+```json Response
+{
+    "entity": {
+        "person_no": "451234561E45",
+        "status": "A",
+        "surname": "DOE",
+        "first_name": "JOHN TENDAI",
+        "sex": "F",
+        "date_of_birth": "1990-01-01",
+        "date_of_death": null,
+        "birth_place": null
+    }
+}
+```

@@ -1,0 +1,53 @@
+---
+title: "Verify US Individual"
+mode: "wide"
+description: "Verify US Identity in real time"
+---
+
+
+Dojah's Identity US API helps to verify the address and SSN of an individual
+
+### Request
+
+```text [GET]
+{{baseUrl}}/api/v1/us/kyc
+```
+
+### Header
+
+| Header | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
+
+### Body Parameter
+
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| first\_name \* | string |  | required |
+| last\_name \* | string |  | required |
+| address\_street\_1 \* | string |  | required |
+| address\_street\_2 | string |  |  |
+| address\_city | string |  | Conditional: required if zipcode is not present |
+| address\_state | string |  | Conditional: required if zipcode is not present |
+| address\_zip\_code | string |  | Conditional: not required if city and state are present |
+| identity\_number\_type \* | string | "'SSN9' or 'SSN4'" | required |
+| identity\_number \* | string |  | required |
+
+### Sample response
+
+```json Response
+{
+  "entity": {
+    "id-number": 4655255784,
+    "results": {
+      "key": "result.match",
+      "message": "ID Located"
+    },
+    "summary-result": {
+      "key": "id.success",
+      "message": "PASS"
+    }
+  }
+}
+```

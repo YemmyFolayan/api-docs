@@ -1,0 +1,300 @@
+---
+title: "React JS Library"
+mode: "wide"
+description: "The Dojah platform has a smooth widget that enables your users to authorize access to their accounts. This widget works effortlessly across various browsers and devices of all sizes."
+---
+
+**How to Generate Widget**
+
+This is a react.js library for implementing the dojah KYC widget.
+
+**Step 1: Start using react-dojah in your project by running**
+
+```text npm
+npm install react-dojah-sdk --save
+```
+
+```text yarn
+yarn add react-dojah-sdk --save
+```
+
+Reference : [https://www.npmjs.com/package/react-dojah](https://www.npmjs.com/package/react-dojah)
+
+Example: [https://github.com/yemmyfolayan/react-dojah](https://github.com/yemmyfolayan/react-dojah)
+
+> ## ❗️Adding the async attribute can cause the inline code to return undefined because the library may not be available at that moment. So avoid the use of async and defer for now.
+
+**Step 2: Configure the Javascript Client Library**
+
+At this stage, you can now create a Dojah widget object by passing in your public key and Application Id in your preferred configuration options.
+
+```javascript React JS
+import React from 'react'
+import Dojah from 'react-dojah'
+
+const App = () => {
+  /**
+   *  This is your app ID
+   * (go to your dashboard at
+   * https://dojah.io/dashboard
+   * to create an app and retrieve it)
+   */
+  const appID = "";
+
+  /**
+   *  This is your account public key
+   *  (go to your dashboard at
+   *  https://dojah.io/dashboard to
+   *  retrieve it. You can also regenerate one)
+   */
+  const publicKey = "";
+
+  /**
+   *  This is the widget type you'd like to load
+   *  (go to your dashboard at
+   *  https://dojah.io/dashboard to enable different
+   *  widget types)
+   */
+  const type = "custom";
+
+  const config = {
+  	widget_id: "" //this is generated from easyonboard here https://app.dojah.io/easy-onboard
+  };
+
+  /**
+   *  These are the user's data to verify, options
+   *  available to you possible options are:
+   *  {first_name: STRING, last_name: STRING, dob: DATE STRING}
+   *
+   *  NOTE: Passing all the values will automatically skip
+   *  the user-data page (thus the commented out `last_name`)
+   */
+  const userData = {
+    first_name: {$first_name}, //Optional
+    last_name: {$last_name}, //Optional
+    dob: {$dob}, //YYYY-MM-DD Optional
+    residence_country: 'NG', //Optional
+    email: {$email}//optional
+  };
+
+
+   const govData = {
+    nin: '',
+    bvn: '',
+    dl: '',
+    mobile: '',
+ 
+  };
+
+  /**
+   *  These are the metadata options
+   *  You can pass any values within the object
+   */
+  const metadata = {
+    user_id: '121',
+  };
+ 
+
+  /**
+   * @param {String} type
+   * This method receives the type
+   * The type can only be one of:
+   * loading, begin, success, error, close
+   * @param {String} data
+   * This is the data from doja
+   */
+  const response = (type, data) => {
+    console.log(type, data);
+    if(type === 'success'){
+    }else if(type === 'error'){
+    }else if(type === 'close'){
+    }else if(type === 'begin'){
+    }else if(type === 'loading'){
+    }
+  }
+
+  // The Dojah library accepts 3 props and
+  // initiliazes the doja widget and connect process
+  return (
+    <Dojah
+      response={response}
+      appID={appID}
+      publicKey={publicKey}
+      type={type}
+      config={config}
+      userData={userData}
+      govData={govData}
+      metadata={metadata}
+    />
+  );
+}
+
+export default App
+```
+
+
+
+
+| Parameter    | Type     | Description                                                                                                                                         |
+|--------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| type         | string   | Widget Type: Values are **'custom', 'verification', 'identification', 'verification', 'liveness'**                                                   |
+| app_id       | string   | Application Id, Get it from your dojah application dashboard [here](https://app.dojah.io/dashboard)                                                  |
+| p_key        | string   | Public Key, Get it from your dojah application dashboard [here](https://app.dojah.io/apps)                                                           |
+| reference_id | string   | Reference ID, It can be passed to keep track of the verification steps (Started, Ongoing, Successful). NB: reference_id character length must be greater than 10 |
+| widget_id    | string   | Widget ID, Get it from your Easy Onboard application dashboard [here](https://app.dojah.io/easy-onboard)                                             |
+| user_data    | object   | Automatically update the user data page, and thus skip the page |
+| gov_data     | object   | Automatically update the government data page, and thus skip the page|
+| metadata     | object   | Your application's metadata to be passed back to you via webhook, onSuccess, or onError                                                              |
+| onSuccess    | function | This is called when your user has successfully completed enrollment with their preferred institution. **The sample response data below is passed to the widget**  |
+| onError      | function | This is called when your user was unable to successfully complete enrollment.                                                                        |
+| onClose      | function | This is called when the widget is closed.                                                                                                            |
+
+**Step 3: Handle a Successful Enrollment**
+
+On successful enrollment, the _onSuccess _callback function that you supplied is called by the client library. We then return the connected account code to your server.
+
+Kindly use the overall status (**response.status** (Boolean, i.e _true or false_)) to ascertain if the request failed or succeeded.
+
+> ## 📘
+> 
+> Webhook Notifications
+> 
+> You can receive the same data below (also passed to onSuccess and onError) via a webhook call.
+> 
+> Register your url for webhook calls [here](https://api-docs.dojah.io/docs/subscribe-to-services) and ensure `kyc.widget` is the `service` you are subscribed to.
+> 
+> In Config object Kindly set **webhook** object value to true (Boolean)
+> 
+> Example : **webhook : true**
+
+```json Response
+{
+  "metadata": {
+    // Any other metadata you pass to the widget will also be listed here
+    "user_id": '12xxxxsxsxsxssx1',
+    "deviceInfo": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0",
+    "ipInfo": {
+      "status": "success",
+      "country": "Nigeria",
+      "countryCode": "NG",
+      "region": "LA",
+      "regionName": "Lagos",
+      "city": "Lagos",
+      "zip": "",
+      "lat": 6.4474,
+      "lon": 3.3903,
+      "timezone": "Africa/Lagos",
+      "isp": "MTN NIGERIA Communication limited",
+      "org": "MTN Nigeria",
+      "as": "AS29465 MTN NIGERIA Communication limited",
+      "query": "102.89.33.XX"
+    }
+  },
+  "data": {
+    "index": {
+      "data": {},
+      "status": true,
+      "message": "Successfully continued to the main checks."
+    },
+    "countries": {
+      "data": {
+        "country": "Nigeria"
+      },
+      "status": true,
+      "message": "Successfully continued to the next step."
+    },
+    "phonenumber": {
+      "data": {
+        "mobile": "+234819999999999"
+      },
+      "status": true,
+      "message": "Successfully continued to the next step."
+    },
+    "user-data": {
+      "status": true,
+      "data": {
+        "firstName": "JOHN",
+        "lastName": "DOE",
+        "dob": "1997-12-10"
+      },
+      "message": ""
+    },
+    "government-data": {
+      "data": {
+        "entity": {
+          "nin": "12334567899",
+          "firstname": "JOHN",
+          "middlename": "DOJAH",
+          "surname": "DOE",
+          "maidenname": "",
+          "telephoneno": "0809999999999",
+          "state": "Imo",
+          "place": "MBUTU",
+          "profession": "STUDENT",
+          "title": "mr",
+          "height": "****",
+          "email": "",
+          "birthdate": "1997-12-10",
+          "birthstate": "Lagos",
+          "birthcountry": "nigeria",
+          "centralID": "8051646",
+          "documentno": "",
+          "educationallevel": "",
+          "employmentstatus": "",
+          "othername": "",
+          "pfirstname": "",
+          "photo": "/9j/4AAQSkZJRgABAAAQUBAQEBAQEAAAAAAAAAAAEC",
+          "pmiddlename": "",
+          "psurname": "",
+          "nspokenlang": "IGBO",
+          "ospokenlang": "ENGLISH",
+          "religion": "christianity",
+          "residence_Town": "OJO",
+          "residence_lga": "Ojo",
+          "residence_state": "Lagos",
+          "residencestatus": "birth",
+          "residence_AddressLine1": "CAMP 5 BLOCK 8 ROOM 7 NIGERIAN ARMY CANTONMENT",
+          "residence_AddressLine2": "CAMP 5 BLOCK 8 ROOM 7 NIGERIAN ARMY CANTONMENT",
+          "self_origin_lga": "Ojo",
+          "self_origin_place": "",
+          "self_origin_state": "Lagos",
+          "signature":"/9j/4AAQSkZJRgABAAAQUBAQEBAQEAAAAAAAAAAAEC",
+          "nationality": "",
+          "gender": "m",
+          "trackingId": "S7Y0NYFM1000468",
+          "customer": "365eb08f-6a1d-46bc-9aa0-XXXXXXXX"
+        }
+      },
+      "message": "",
+      "status": true
+    }
+  },
+  "selfieUrl": "https://dojah-images.s3.amazonaws.com/633d5225b93aae0034ba243dface.jpeg",
+  "verificationId": 29928,
+  "verificationUrl": "https://app.dojah.io/verifications/bio-data/DJ-78BD664121",
+  "referenceId": "DJ-78BD664121",
+  "verificationType": "nin",
+  "verificationValue": "12334567899",
+  "verificationMode": "selfie",
+}
+```
+
+> ## 📘
+> 
+> How to retrieve the Selfie Photo
+> 
+> There's a response object that is sent to the client via the widget launcher on success or failure  
+> **selfieUrl** and **idUrl** under selfie and id in the success response objects, which holds the final selfie capture and id capture respectively.
+
+**WIDGET TEST CREDENTIALS**
+
+> ## 🚧
+> 
+> Applicable to only widget types of 'payment' and 'link'
+
+When testing the widget, you can use the following keys to successfully login to the test bank (GTBank)
+
+1.  Username: [test@dojah.io](mailto:test@dojah.io)
+2.  Password: Exp3n5er_!@
+
+**The Sample response data after successful verification**

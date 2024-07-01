@@ -1,0 +1,62 @@
+---
+title: "Fetch Address Verification Data"
+mode: "wide"
+description: "Retrieve the details of an address verification requested"
+---
+
+
+
+```text [GET]
+{{baseUrl}}/api/v1/kyc/address
+```
+
+### Header
+
+| Header | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key |
+
+### Query parameter
+
+| Key | Type | Description |
+| --- | --- | --- |
+| reference\_id | string | 69e10264-4b90-64fe-b4b7-c9dddafd0241 |
+
+### Sample response
+
+
+```json Response
+{
+    "entity": {
+        "status":"pending",
+        "reference_id": "69e10264-4b90-64fe-b4b7-c9dddafd0241",
+        "data": {
+            "applicant": {
+                "first_name": "John",
+                "last_name": "Doe",
+                "phone": "08012345678",
+                "middle_name": "Kabiru",
+                "photo": "",
+                "gender": "Male",
+                "dob": "17/01/1988"
+            },
+            "location": "7.081273, 8.232523",
+            "photos": [
+                ""
+            ],
+            "neighbor": {
+                "name": "Musa Garba",
+                "comment": "Very friendly",
+                "phone": "080987654321"
+            },
+            "city": "oshodi",
+            "street": "270 Murtala Muhammed Way, Alagomeji. Yaba",
+            "lga": "lagos mainland",
+            "state": "Lagos",
+            "country": "Nigeria",
+            "comments": ""        
+        }
+    }
+}    
+```

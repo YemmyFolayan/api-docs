@@ -1,0 +1,122 @@
+---
+title: "Lookup BVN"
+mode: "wide"
+description: "The Lookup BVN endpoint returns details of a particular BVN"
+---
+
+
+
+### [](https://api-docs.dojah.io/docs/lookup-bvn#request)
+
+```text [GET]
+{{baseUrl}}/api/v1/kyc/bvn/full</span>
+
+```
+
+### [](https://api-docs.dojah.io/docs/lookup-bvn#headers)
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod_sk_1T1eSavlZxy02OT3OWlvbxK4G |
+
+### [](https://api-docs.dojah.io/docs/lookup-bvn#query-parameters)
+
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| bvn \* | string | A valid bvn | required |
+
+### [](https://api-docs.dojah.io/docs/lookup-bvn#response-sample)
+
+```json Response
+{
+  "entity": {
+        "bvn": "22171234567",
+        "first_name": "JOHN",
+        "last_name": "DOE",
+        "middle_name": "AHMED",
+        "gender": "Male",
+        "date_of_birth": "1997-05-16",
+        "phone_number1": "08012345678",
+        "image": "BASE 64 IMAGE",
+        "phone_number2": "08012345678"
+    }
+}
+```
+
+### 
+
+Test Credentials for Sandbox
+
+[](https://api-docs.dojah.io/docs/lookup-bvn#test-credentials-for-sandbox)
+
+Kindly use this Test BVN in sandbox Environment
+
+bvn = `22222222222`
+
+___
+
+## BVN Advanced
+
+
+
+```text [GET]
+{{baseUrl}}/api/v1/kyc/bvn/advance
+```
+
+### [](https://api-docs.dojah.io/docs/lookup-bvn#headers-1)
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod_sk_1T1eSavlZxy02OT3OWlvbxK4G |
+
+### [](https://api-docs.dojah.io/docs/lookup-bvn#query-parameters-1)
+
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| bvn \* | string | A valid bvn | required |
+
+### [](https://api-docs.dojah.io/docs/lookup-bvn#response-sample-1)
+
+```json Response
+{
+  "entity": {
+        "bvn": "22171234567",
+        "first_name": "JOHN",
+        "last_name": "DOE",
+        "middle_name": "AHMED",
+        "gender": "Male",
+        "date_of_birth": "1997-05-16",
+        "phone_number1": "08012345678",
+        "image": "BASE 64 IMAGE",
+      	"email": "johndoe@gmail.com",
+        "enrollment_bank": "GTB",
+        "enrollment_branch": "IKEJA",
+        "level_of_account": "LEVEL 2",
+        "lga_of_origin": "OSOGBO",
+        "lga_of_residence": "IKEJA",
+        "marital_status": "SINGLE",
+        "name_on_card": "",
+        "nationality": "NIGERIAN",
+        "nin": "70123456789",
+        "phone_number2": "08012345678",
+        "registration_date": "",
+        "residential_address": "",
+        "state_of_origin": "OSUN",
+        "state_of_residence": "LAGOS",
+        "title": "MISS",
+        "watch_listed": "NO"
+    }
+}
+```
+
+### 
+
+Test Credentials for Sandbox
+
+[](https://api-docs.dojah.io/docs/lookup-bvn#test-credentials-for-sandbox-1)
+
+Kindly use this Test BVN in sandbox Environment
+
+bvn = `22222222222`

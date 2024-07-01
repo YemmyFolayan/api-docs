@@ -1,0 +1,43 @@
+---
+title: "Validate Ghana Digital Addresses"
+mode: "wide"
+description: "Validate Ghana Unique Digital Addresses For All Locations Across Ghana and This API endpoint allows you to validate unique digital addresses for all locations across Ghana
+"
+---
+
+
+### Request
+
+```text [GET]
+{{baseUrl}}/api/v1/gh/kyc/address/gps
+```
+
+### Header
+
+| Header | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
+
+### Query parameter
+
+| Key | Type | Description |  |
+| --- | --- | --- | --- |
+| address | string | The Digital Address Number (AK-012-3456) | required |
+
+### Sample response
+
+```json Response
+{
+  "entity": {
+     "street_name": "Mercy Cl",
+     "region": "Western",
+     "district": "District Name",
+     "community": "Kwaso Community",
+     "postal_area": "Western",
+     "post_code": "WS001",
+     "location": "4.930449802346897,-1.736600565930667"
+  }
+}
+```
+

@@ -1,0 +1,69 @@
+---
+title: "Lookup User Accounts"
+mode: "wide"
+description: "Sample Guides, whatever, Introduction to guides and whatnot"
+---
+
+## Lookup User Accounts
+
+Get account numbers linked to a BVN or Mobile Number
+
+Use with the BVN Number or the Mobile Number
+
+### Request
+
+```text [GET]
+{{baseUrl}}/api/v1/kyc/accounts
+```
+
+### Header
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod_sk_1T1eSavlZxy02OT3OWlvbxK4G |
+
+### Query parameter
+
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| mobile_number | string | Mobile Number of Customer |  |
+| bvn | string | BVN Number of Customer |  |
+
+### Sample response
+
+```json Response
+{
+    "entity": {
+        "banks": [
+            {
+                "accountDescription": "221****095",
+                "bankName": "Zenith Bank",
+                "bankCode": "057",
+                "mobile_number": "2348137877844"
+            },
+            {
+                "account_description": "999****260",
+                "bankName": "Access Bank Nigeria Plc",
+                "bankCode": "044",
+                "mobile_number": "2348137877844"
+            },
+            {
+                "accountDescription": "131****617",
+                "bankName": "Access Bank Nigeria Plc",
+                "bankCode": "044",
+                "mobile_number": "2348137877844"
+            },
+            {
+                "accountDescription": "304XXXX407",
+                "bankName": "FBN",
+                "bankCode": "011",
+                "mobile_number": "2348137877844"
+            }
+        ],
+      "bvn": "22271325557",
+      "mobile_number": "08137877844"
+    }
+
+}
+```

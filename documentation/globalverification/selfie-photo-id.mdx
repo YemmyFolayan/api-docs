@@ -1,0 +1,61 @@
+---
+title: "Selfie Photo ID Verification"
+mode: "wide"
+description: "Verify Users Photo ID with their Selfie Image in real time"
+---
+
+
+To ensure that your customer is who they say they are, you can allow them to take a selfie photo which you can pass on to the Dojah for verification process
+
+This helps to significantly reduce the possibility of fraud by confirming the person using your product is the account owner at the validated bank.
+
+**Note that;** Confidence value is used to verify match and a confidence value from 60 and above shows a successful match else a mismatch.
+
+To Verify Photo ID with Selfie Image;
+
+### Request
+
+```text [GET]
+{{baseUrl}}/api/v1/kyc/photoid/verify
+```
+
+
+
+| POST Parameter | Type | Description |
+| --- | --- | --- |
+| selfie_image  
+_REQUIRED_ | string | Base64 value of the selfie image
+NB: Kindly truncate **data:image/jpeg;base64,** from the selfie_image object. |
+| photoid_image _REQUIRED_ | string | Base64 value of the photoId image NB: Kindly truncate **data:image/jpeg;base64,** from the selfie_image object.|
+
+### Header
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
+
+
+> ## 📘 NB : Confidence Values ranges from 0% to 100 %
+> 
+> 0% - 90% denote match value is false  
+> 90% -100% denote match value is true
+
+
+
+```json Response
+{
+    "entity": {
+        "selfie": {
+            "confidence_value": 90,
+            "match": true,
+            "photoId_image_blurry": false,
+            "selfie_image_blurry": false,
+            "selfie_glare": true,
+            "photoId_glare": true,
+            "age_range": "25-35 years",
+            "sunglasses": false
+        }
+    }
+}
+```

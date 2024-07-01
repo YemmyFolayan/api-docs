@@ -1,0 +1,72 @@
+---
+title: "Email Check"
+mode: "wide"
+description: "Submit an Email Address for Check"
+---
+
+
+
+```text [GET]
+{{baseUrl}}/api/v1/fraud/email
+```
+
+### Header
+
+| Header | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
+
+### Query parameter
+
+| Key | Type | Description |
+| --- | --- | --- |
+| email\_address | string | email of user |
+
+### Sample response
+
+```json Response
+{
+  "entity": {
+    "email": "johndoe@gmail.com",
+    "reputation": "high",
+    "suspicious": false,
+    "references": 178,
+    "details": {
+      "blacklisted": false,
+      "malicious_activity": false,
+      "malicious_activity_recent": false,
+      "credentials_leaked": true,
+      "credentials_leaked_recent": false,
+      "data_breach": true,
+      "first_seen": "07/01/2008",
+      "last_seen": "03/22/2021",
+      "domain_exists": true,
+      "domain_reputation": "n/a",
+      "new_domain": false,
+      "days_since_domain_creation": 9474,
+      "suspicious_tld": false,
+      "spam": false,
+      "free_provider": true,
+      "disposable": false,
+      "deliverable": true,
+      "accept_all": false,
+      "valid_mx": true,
+      "primary_mx": "gmail-smtp-in.l.google.com",
+      "spoofable": true,
+      "spf_strict": true,
+      "dmarc_enforced": false,
+      "profiles": [
+        "aboutme",
+        "flickr",
+        "angellist",
+        "foursquare",
+        "myspace",
+        "twitter",
+        "vimeo",
+        "linkedin"
+      ]
+    }
+  }
+}
+```

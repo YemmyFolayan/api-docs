@@ -1,0 +1,44 @@
+---
+title: "Angola National ID 🇦🇴"
+mode: "wide"
+description: "This endpoint allows you to Lookup a South African National ID."
+---
+
+
+
+### Request
+
+```text [GET]
+{{baseURL}}/api/v1/ao/kyc/nin
+```
+
+### Header
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
+
+### Query parameter
+
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| id \* | string | Angolan National ID Number | required |
+
+### Sample request
+
+```json Response
+{
+    "entity": {
+       "id_number": "001234567RY987",
+       "first_name": "JOHN FRANCO",
+       "last_name": "SAMUEL DOE",
+       "mobile": "930123456",
+       "gender": "MALE",
+       "dob": "",
+       "image": "/9j/4AAQSkZJRgABAQAAAQABAAD/...",
+       "address": "RUA",
+       "expiry_date": 1704297141000
+    }
+}
+```

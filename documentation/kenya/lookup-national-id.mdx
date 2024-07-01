@@ -1,0 +1,52 @@
+---
+title: "Lookup Kenya National ID"
+mode: "wide"
+description: "This endpoint allows you to Lookup a Kenya National ID."
+---
+
+
+### Request
+
+```test [GET]
+{{baseURL}}/api/v1/ke/kyc/id
+
+```
+
+### Header
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod_sk_1T1eSavlZxy02OT3OWlvbxK4G |
+
+### Query parameter
+
+| Key | Type | Description |  |
+| --- | --- | --- | --- |
+| id \* | string | The national ID number | required |
+| first_name \* | string | The first name of the document holder. | required |
+| last_name \* | string | The last name of the document holder. | required |
+| middle_name | string | The middle name of the document holder. |  |
+| date_of_birth \* | string | The date of birth of the document holder in the format yyyy-MM-dd.. | required |
+| gender \* | string | The gender of the document holder. | required |
+
+### Sample response
+
+```json Response
+{
+  "entity": {
+    "date_of_birth": "1996-02-21",
+    "first_name": "John",
+    "gender": "M",
+    "id": "4812640614",
+    "is_date_of_birth_match": true,
+    "is_first_name_match": true,
+    "is_gender_match": true,
+    "is_last_name_match": true,
+    "is_middle_name_match": true,
+    "last_name": "Doe",
+    "middle_name": "Donald"
+  }
+}
+```
+

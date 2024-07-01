@@ -1,0 +1,42 @@
+---
+title: "Validate FIRS TIN"
+mode: "wide"
+description: "Validate a business's Tax Identification Number with the FIRS"
+---
+
+
+
+### Request
+
+```text [GET]
+{{baseUrl}}/api/v1/kyc/tin
+```
+
+### Header
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod_sk_1T1eSavlZxy02OT3OWlvbxK4G |
+
+### Query parameter
+
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| tin \* | string | A valid tin | required |
+
+### Sample response
+
+```json Response
+
+"entity": {
+    "search": "18609323-0001",
+    "taxpayer_name": "BRYAN GODWIN NIG LTD",
+    "cac_reg_number": "3897612",
+    "firstin": "18609323-0001",
+    "jittin": "N/A",
+    "tax_office": "MSTO ALIMOSHO",
+    "phone_number": "08012345678",
+    "email": "test@gmail.com"
+  }
+```

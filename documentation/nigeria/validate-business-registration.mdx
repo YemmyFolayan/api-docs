@@ -1,0 +1,40 @@
+---
+title: "Validate Business Registration"
+mode: "wide"
+description: "Validate a business's registration with the Nigerian Corporate Registry **CAC**"
+---
+
+
+### Request
+
+```text [GET]
+{{baseUrl}}/api/v1/kyc/cac
+```
+
+### Header
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | prod_sk_1T1eSavlZxy02OT3OWlvbxK4G |
+
+### Query parameter
+
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| rc_number \* | string | RC number | required |
+| company_name \* | string | name of company | required |
+
+### Sample response
+
+```json Response
+{
+  "entity": {
+    "rc_number": "1261103",
+    "company_name": "ADAFRUIT LIMITED",
+    "address": "NO 37 GIBSON ROAD UBEJI",
+    "date_of_registration": "2015-05-15",
+    "type_of_company": "COMPANY"
+  }
+}
+```
