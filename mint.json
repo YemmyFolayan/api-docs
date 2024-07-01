@@ -280,16 +280,16 @@
 
 
 {
-  "group": "LIBRARIES & SDKS",
+  "group": "IDENTITY VERIFICATION",
   "pages": [
 
-     "guides/sdks/overviews",
-    
+ 
       {
-          "group": "Libraries",
-          "pages": ["guides/sdks/javascript-library", "guides/sdks/react-library", "guides/sdks/react-native-library", "guides/sdks/flutter-library" ]
-      }
-
+          "group": "Government Lookup",
+          "pages": ["guides/identity/lookup/individual-lookup", "guides/identity/lookup/bussiness-lookup", "guides/identity/lookup/download-lookup" ]
+      },
+      "guides/identity/easyonboard", "guides/identity/document-analysis", "guides/identity/address-verification"
+    
     
   ]
 },
@@ -297,50 +297,66 @@
 
 
 {
-"group": "GOVERNMENT DATABASE CHECKS",
-"pages": [
+  "group": "FRAUD MONITORING",
+  "pages": [
 
 
-  {
-      "group": "Nigeria 🇳🇬",
-      "pages": ["guides/nigeria/lookup-bvn", "guides/nigeria/lookup-phone-number", "guides/nigeria/lookup-nuban", "guides/nigeria/lookup-nuban-kycstatus", "guides/nigeria/lookup-nin", "guides/nigeria/lookup-virtual-nin", "guides/nigeria/lookup-drivers-license", "guides/nigeria/lookup-voters-id", "guides/nigeria/lookup-phone-number", "guides/nigeria/validate-business-registration", "guides/nigeria/validate-firs-tin", "guides/nigeria/lookup-cac", "guides/nigeria/lookup-user-account" ]
-  },
-
-  
-  {
-      "group": "Kenya 🇰🇪",
-      "pages": ["guides/kenya/lookup-national-id", "guides/kenya/lookup-passport", "guides/kenya/lookup-kra-pin" ]
-    },
-
-  {
-      "group": "Uganda 🇺🇬",
-      "pages": [ "guides/uganda/lookup-voters-id", "guides/uganda/lookup-telco-subscriber" ]
-    },
-
-  
-  {
-      "group": "Ghana 🇬🇭",
-      "pages": ["guides/ghana/lookup-passport", "guides/ghana/lookup-drivers-license", "guides/ghana/lookup-voters-id", "guides/ghana/lookup-tin", "guides/ghana/lookup-ssnit", "guides/ghana/validate-digital-addresses" ]
-    },
+      "guides/fraud/aml",
+    
+      {
+        "group": "Easy detect",
+        "pages": ["guides/fraud/easy-detect/create-flow", "guides/fraud/easy-detect/connect-flow", "guides/fraud/easy-detect/edit-process",  "guides/fraud/easy-detect/case-events" ]
+    }
+    
+  ]
+},
 
 
-  {
-      "group": "Zimbabwe 🇿🇼",
-      "pages": ["guides/zimbabwe/lookup-national-id", "guides/zimbabwe/lookup-credit-check"  ]
-    },
+{
+  "group": "REPORTING ANALYTICS",
+  "pages": [
 
  
-  {
-      "group": "South Africa 🇿🇼",
-      "pages": ["guides/southafrica/lookup-national-id" ]
+    
+      "guides/reporting/api-report", "guides/reporting/message-log", "guides/reporting/easydetect-report",
+      
+      
+      {
+        "group": "Developers",
+        "pages": ["guides/reporting/developers/api-log",
+      
+      
+        {
+          "group": "Configuration",
+          "pages": ["guides/reporting/developers/configuration/create-app",  "guides/reporting/developers/configuration/api-key", "guides/reporting/developers/configuration/webhook"]
+      
+          
+        }
+      
+      ]
     },
+      
+      "guides/reporting/billing",
+      
+      
+      {
+        "group": "Settings",
+        "pages": ["guides/reporting/settings/audit-log",
 
-
-  {
-      "group": "Angola 🇦🇴",
-      "pages": ["guides/angola/lookup-national-id"]
+        {
+          "group": "Teams",
+          "pages": ["guides/reporting/settings/team/manage-team", "guides/reporting/settings/team/invite-team" ]
+      
+          
+        }
+      
+      
+      
+      ]
     }
-]
+    
+    
+  ]
 },
 
 
