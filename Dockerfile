@@ -27,5 +27,3 @@ COPY . .
 
 # Uses port which is used by the actual application
 EXPOSE 3000
-
-RUN mintlify dev
