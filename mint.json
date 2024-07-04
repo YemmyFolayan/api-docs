@@ -360,16 +360,31 @@
 },
 
 
-
+{
+  "group": "INTRODUCTION",
+  "pages": [
+    "api-reference/introduction",
+    "api-reference/environment"
+   
+  ]
+},
 
 {
-      "group": "Endpoint Examples",
+      "group": "GET BALANCE",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/delete"
+        "api-reference/endpoint/get_balance"
+       
       ]
+},
+
+{
+  "group": "KYC SERVICES",
+  "pages": [
+    "api-reference/endpoint/kyc_service/lookup_bvn",
+    "api-reference/endpoint/create",
+    "api-reference/endpoint/update",
+    "api-reference/endpoint/delete"
+  ]
 }
   ],
   "footerSocials": {
