@@ -340,45 +340,6 @@
     
     
   ]
-},
-
-
-{
-  "group": "INTRODUCTION",
-  "pages": [
-    "api-reference/introduction",
-    "api-reference/environment"
-   
-  ]
-},
-
-{
-      "group": "GET BALANCE",
-      "pages": [
-        "api-reference/endpoint/get_balance"
-       
-      ]
-},
-
-{
-  "group": "KYC SERVICES",
-  "pages": [
-    "api-reference/endpoint/kyc_service/lookup_bvn",
-    "api-reference/endpoint/kyc_service/lookup_phone_basic",
-    "api-reference/endpoint/kyc_service/lookup_phone_advance",
-    "api-reference/endpoint/kyc_service/lookup_nuban",
-    "api-reference/endpoint/kyc_service/lookup_vnin",   
-    "api-reference/endpoint/kyc_service/lookup_nin",
-    "api-reference/endpoint/kyc_service/lookup_driver_license", 
-    "api-reference/endpoint/kyc_service/lookup_voters",   
-    "api-reference/endpoint/kyc_service/validate_bvn",
-    "api-reference/endpoint/kyc_service/lookup_phone_advance",
-    "api-reference/endpoint/kyc_service/lookup_phone_advance",
-    "api-reference/endpoint/kyc_service/lookup_phone_advance",
-    "api-reference/endpoint/kyc_service/lookup_phone_advance"
-   
-
-  ]
 }
   ],
   "footerSocials": {
