@@ -19,8 +19,6 @@
     "url": "https://app.dojah.io"
   },
   "tabs": [
-
-
     {
       "name": "Guides",
       "url": "guides"
@@ -32,46 +30,33 @@
   ],
   
   "navigation": [
- 
-   
     {
       "group": "GENERAL",
-      "pages": ["documentation/introduction/introduction", "documentation/general/keywords", "documentation/general/response-codes", "documentation/general/use-cases"  ]
+      "pages": ["docs/getting-started", "docs/general/keywords", "docs/general/response-codes", "docs/general/use-cases"]
     },
 
      {
         "group": "GETTING STARTED",
         "pages": [
-
-           "documentation/gettingstarted/sign-in", "documentation/gettingstarted/create-an-app", "documentation/gettingstarted/fund-wallet",
+           "docs/gettingstarted/sign-in", "docs/gettingstarted/create-an-app", "docs/gettingstarted/fund-wallet",
             {
                 "group": "Authentication",
-                "pages": ["documentation/gettingstarted/api-keys", "documentation/gettingstarted/environments", "documentation/gettingstarted/authorization-guide" ]
+                "pages": ["docs/gettingstarted/api-keys", "docs/gettingstarted/environments", "docs/gettingstarted/authorization-guide" ]
             },
-
             {
                 "group": "Webhooks",
-                "pages": ["documentation/gettingstarted/subscribe-to-service", "documentation/gettingstarted/fetch-all-webhooks", "documentation/gettingstarted/delete-webhook", "documentation/gettingstarted/verify-events" ]
+                "pages": ["docs/gettingstarted/subscribe-to-service", "docs/gettingstarted/fetch-all-webhooks", "docs/gettingstarted/delete-webhook", "docs/gettingstarted/verify-events" ]
             }
         ]
     },
-
-
-
-
-
     {
       "group": "LIBRARIES & SDKS",
       "pages": [
-
-         "documentation/sdks/overviews",
-        
+         "docs/sdks/overviews",
           {
               "group": "Libraries",
-              "pages": ["documentation/sdks/javascript-library", "documentation/sdks/react-library", "documentation/sdks/react-native-library", "documentation/sdks/flutter-library" ]
+              "pages": ["docs/sdks/javascript-library", "docs/sdks/react-library", "docs/sdks/react-native-library", "docs/sdks/flutter-library" ]
           }
-
-        
       ]
   },
 
@@ -84,42 +69,42 @@
     
       {
           "group": "Nigeria 🇳🇬",
-          "pages": ["documentation/nigeria/lookup-bvn", "documentation/nigeria/lookup-phone-number", "documentation/nigeria/lookup-nuban", "documentation/nigeria/lookup-nuban-kycstatus", "documentation/nigeria/lookup-nin", "documentation/nigeria/lookup-virtual-nin", "documentation/nigeria/lookup-drivers-license", "documentation/nigeria/lookup-voters-id", "documentation/nigeria/lookup-phone-number", "documentation/nigeria/validate-business-registration", "documentation/nigeria/validate-firs-tin", "documentation/nigeria/lookup-cac", "documentation/nigeria/lookup-user-account" ]
+          "pages": ["docs/nigeria/lookup-bvn", "docs/nigeria/lookup-phone-number", "docs/nigeria/lookup-nuban", "docs/nigeria/lookup-nuban-kycstatus", "docs/nigeria/lookup-nin", "docs/nigeria/lookup-virtual-nin", "docs/nigeria/lookup-drivers-license", "docs/nigeria/lookup-voters-id", "docs/nigeria/lookup-phone-number", "docs/nigeria/validate-business-registration", "docs/nigeria/validate-firs-tin", "docs/nigeria/lookup-cac", "docs/nigeria/lookup-user-account" ]
       },
 
       
       {
           "group": "Kenya 🇰🇪",
-          "pages": ["documentation/kenya/lookup-national-id", "documentation/kenya/lookup-passport", "documentation/kenya/lookup-kra-pin" ]
+          "pages": ["docs/kenya/lookup-national-id", "docs/kenya/lookup-passport", "docs/kenya/lookup-kra-pin" ]
         },
 
       {
           "group": "Uganda 🇺🇬",
-          "pages": [ "documentation/uganda/lookup-voters-id", "documentation/uganda/lookup-telco-subscriber" ]
+          "pages": [ "docs/uganda/lookup-voters-id", "docs/uganda/lookup-telco-subscriber" ]
         },
 
       
       {
           "group": "Ghana 🇬🇭",
-          "pages": ["documentation/ghana/lookup-passport", "documentation/ghana/lookup-drivers-license", "documentation/ghana/lookup-voters-id", "documentation/ghana/lookup-tin", "documentation/ghana/lookup-ssnit", "documentation/ghana/validate-digital-addresses" ]
+          "pages": ["docs/ghana/lookup-passport", "docs/ghana/lookup-drivers-license", "docs/ghana/lookup-voters-id", "docs/ghana/lookup-tin", "docs/ghana/lookup-ssnit", "docs/ghana/validate-digital-addresses" ]
         },
 
    
       {
           "group": "Zimbabwe 🇿🇼",
-          "pages": ["documentation/zimbabwe/lookup-national-id", "documentation/zimbabwe/lookup-credit-check"  ]
+          "pages": ["docs/zimbabwe/lookup-national-id", "docs/zimbabwe/lookup-credit-check"  ]
         },
 
      
       {
           "group": "South Africa 🇿🇼",
-          "pages": ["documentation/southafrica/lookup-national-id" ]
+          "pages": ["docs/southafrica/lookup-national-id" ]
         },
 
     
       {
           "group": "Angola 🇦🇴",
-          "pages": ["documentation/angola/lookup-national-id"]
+          "pages": ["docs/angola/lookup-national-id"]
         }
   ]
 },
@@ -133,30 +118,30 @@
     
       {
           "group": "Global Identity Verification 🌍",
-          "pages": ["documentation/globalverification/selfie-photo-id", "documentation/globalverification/location-reverse-geocoding" ]
+          "pages": ["docs/globalverification/selfie-photo-id", "docs/globalverification/location-reverse-geocoding" ]
       },
 
   
       {
           "group": "Nigeria 🇳🇬",
-          "pages": ["documentation/nigeria/validate-bvn", "documentation/nigeria/verify-nin-with-selfie-image", "documentation/nigeria/verify-bvn-with-selfie-image", "documentation/nigeria/age-identity-verification", "documentation/nigeria/selfie-verification-vnin" ]
+          "pages": ["docs/nigeria/validate-bvn", "docs/nigeria/verify-nin-with-selfie-image", "docs/nigeria/verify-bvn-with-selfie-image", "docs/nigeria/age-identity-verification", "docs/nigeria/selfie-verification-vnin" ]
       },
 
    
       {
           "group": "United States 🇺🇸",
-          "pages": ["documentation/unitedstates/verify-us-individual" ]
+          "pages": ["docs/unitedstates/verify-us-individual" ]
       },
 
       
       {
           "group": "United Kingdom 🇬🇧",
-          "pages": ["documentation/unitedkingdom/uk-ekyc" ]
+          "pages": ["docs/unitedkingdom/uk-ekyc" ]
       },
 
       {
           "group": "Canada 🇨🇦",
-          "pages": ["documentation/canada/canada-ekyc"]
+          "pages": ["docs/canada/canada-ekyc"]
       }
   ]
 },
@@ -168,7 +153,7 @@
   "group": "BIOMETRIC CHECKS",
   "pages": [
 
-     "documentation/biometrics/liveness-check"
+     "docs/biometrics/liveness-check"
      
   ]
 },
@@ -178,7 +163,7 @@
   "group": "DOCUMENT ANALYSIS",
   "pages": [
 
-     "documentation/documentanalysis/document-analysis", "documentation/documentanalysis/generic-ocr-service"
+     "docs/documentanalysis/document-analysis", "docs/documentanalysis/generic-ocr-service"
      
   ]
 },
@@ -188,7 +173,7 @@
   "group": "ADDRESS VERIFICATION",
   "pages": [
 
-     "documentation/addressverification/individual-address-verification", "documentation/addressverification/business-address-verification",  "documentation/addressverification/fetch-address-verification-data"
+     "docs/addressverification/individual-address-verification", "docs/addressverification/business-address-verification",  "docs/addressverification/fetch-address-verification-data"
      
   ]
 },
@@ -202,12 +187,12 @@
      
       {
           "group": "AML Screening Individual",
-          "pages": ["documentation/aml/screening-info-individual"]
+          "pages": ["docs/aml/screening-info-individual"]
       },
 
       {
           "group": "AML Screening Business",
-          "pages": ["documentation/aml/screening-info-business" ]
+          "pages": ["docs/aml/screening-info-business" ]
       }
   ]
 },
@@ -216,7 +201,7 @@
   "group": "FRAUD APIS",
   "pages": [
 
-     "documentation/fraud/user-screening", "documentation/fraud/ip-screening", "documentation/fraud/email-check", "documentation/fraud/phone-check"
+     "docs/fraud/user-screening", "docs/fraud/ip-screening", "docs/fraud/email-check", "docs/fraud/phone-check"
      
   ]
 },
@@ -225,7 +210,7 @@
   "group": "MESSAGING SERVICES",
   "pages": [
 
-     "documentation/messaging/send-messages", "documentation/messaging/get-message-status", "documentation/messaging/send-otp", "documentation/messaging/validate-otp"
+     "docs/messaging/send-messages", "docs/messaging/get-message-status", "docs/messaging/send-otp", "docs/messaging/validate-otp"
      
   ]
 },
@@ -233,9 +218,7 @@
 {
   "group": "GLOBAL BUSINESS CHECK",
   "pages": [
-
-     "documentation/globalverification/bussinesscheck/global-business-search",   "documentation/globalverification/bussinesscheck/global-business-details"
-     
+     "docs/globalverification/bussinesscheck/global-business-search", "docs/globalverification/bussinesscheck/global-business-details"
   ]
 },
 
@@ -243,8 +226,8 @@
   "group": "FRAUD MONITORING",
   "pages": [
 
-     "documentation/fraud/monitoring/overview",  
-     "documentation/fraud/monitoring/live-transactions"
+     "docs/fraud/monitoring/overview",
+     "docs/fraud/monitoring/live-transactions"
      
   ]
 },
@@ -254,11 +237,11 @@
   "group": "GENERAL SERVICES",
   "pages": [
 
-     "documentation/general/service/resolve-nuban", 
-     "documentation/general/service/fetch-banks", 
-     "documentation/general/service/resolve-card-bin",
-     "documentation/general/service/buy-airtime",
-     "documentation/general/service/buy-internet-data"
+     "docs/general/service/resolve-nuban",
+     "docs/general/service/fetch-banks",
+     "docs/general/service/resolve-card-bin",
+     "docs/general/service/buy-airtime",
+     "docs/general/service/buy-internet-data"
      
   ]
 },
@@ -373,9 +356,10 @@
 }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "x": "https://twitter.com/DojahInc",
+    "github": "https://github.com/dojah-inc",
+    "slack": "https://join.slack.com/t/dojahinc/shared_invite/zt-ng9ch04k-bT5sVBnTY6Fa1ffQ0SAxpQ",
+    "linkedin": "https://www.linkedin.com/company/dojah/"
   },
   "backgroundImage": "/background.png"
 }
