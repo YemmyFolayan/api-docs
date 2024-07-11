@@ -1,0 +1,163 @@
+name: Build, Push and Update Application
+
+on:
+  push:
+    branches:
+      - development
+      - production
+
+jobs:
+  build-and-push-prod:
+    if: github.ref == 'refs/heads/production'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - dockerfile: Dockerfile
+            service: apidocsprod
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # - uses: sonarsource/sonarqube-scan-action@master
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        
+      - name: 'Docker Login'
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.ACR_SERVER }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      # - uses: sonarsource/sonarqube-quality-gate-action@master
+      #   timeout-minutes: 5
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          
+      - name: Build and Push Docker Images
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: ${{ secrets.ACR_SERVER }}/${{ matrix.service }}:${{ github.sha }}
+          file: ${{ matrix.dockerfile }}
+
+
+  update-argocd-application-prod:
+    if: github.ref == 'refs/heads/production'
+    needs: build-and-push-prod
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout argocd repository
+        uses: actions/checkout@v3
+        with:
+          repository: 'dojah-inc/dojah-devops-template'
+          token: ${{ secrets.GIT_PASSWORD }}
+      - name: modify tag on dojah devops template
+        run: |
+          TAG=${{ github.sha }}
+          echo set Branch Name
+          if [[ "${{ github.ref }}" == "refs/heads/production" ]]; then
+            echo "ENV_NAME=prod" >> $GITHUB_ENV
+            echo Commit: ${{ github.sha }}
+            git config user.name  ${{ secrets.GIT_USERNAME }}
+            git config user.email ${{ secrets.GIT_EMAIL }}
+            cat dojah-production/values/${{ secrets.PROJECT_NAME }}.yaml
+            echo Updating tags
+            sed -i 's/\('tag': \)\(.*\)/\1'$TAG'/' dojah-production/values/${{ secrets.PROJECT_NAME }}.yaml
+            git add .
+            git commit -m "${{ secrets.PROJECT_NAME }} - ${{ github.sha }} - ${{ github.actor }}"
+            # Push quietly to prevent showing the token in log
+            git push -q https://github.com/dojah-inc/dojah-devops-template.git main
+          else
+            echo "ENV_NAME=unknown" >> $GITHUB_ENV
+          fi
+        env:
+          GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+          GIT_PASSWORD: ${{ secrets.GIT_PASSWORD }}
+          PROJECT_NAME: ${{ secrets.PROJECT_NAME }}
+          GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
+          
+  build-and-push-dev:
+    if: github.ref != 'refs/heads/production'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - dockerfile: Dockerfile
+            service: apidocs
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # - uses: sonarsource/sonarqube-scan-action@master
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        
+      - name: 'Docker Login'
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.ACR_SERVER }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      # - uses: sonarsource/sonarqube-quality-gate-action@master
+      #   timeout-minutes: 5
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          
+      - name: Build and Push Docker Images
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: ${{ secrets.ACR_SERVER }}/${{ matrix.service }}:${{ github.sha }}
+          file: ${{ matrix.dockerfile }}
+
+  update-argocd-application-dev:
+    if: github.ref != 'refs/heads/production'
+    needs: build-and-push-dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout argocd repository
+        uses: actions/checkout@v3
+        with:
+          repository: 'dojah-inc/dojah-devops-template'
+          token: ${{ secrets.GIT_PASSWORD }}
+      - name: modify tag on dojah devops template
+        run: |
+          TAG=${{ github.sha }}
+          echo set Branch Name
+          if [[ "${{ github.ref }}" == "refs/heads/development" ]]; then
+            echo "ENV_NAME=dev" >> $GITHUB_ENV
+            echo Commit: ${{ github.sha }}
+            git config user.name  ${{ secrets.GIT_USERNAME }}
+            git config user.email ${{ secrets.GIT_EMAIL }}
+            cat dojah-dev/values/${{ secrets.PROJECT_NAME }}.yaml
+            echo Updating tags
+            sed -i 's/\('tag': \)\(.*\)/\1'$TAG'/' dojah-dev/values/${{ secrets.PROJECT_NAME }}.yaml
+            git add .
+            git commit -m "${{ secrets.PROJECT_NAME }} - ${{ github.sha }} - ${{ github.actor }}"
+            # Push quietly to prevent showing the token in log
+            git push -q https://github.com/dojah-inc/dojah-devops-template.git main
+          elif [[ "${{ github.ref }}" == "refs/heads/staging" ]]; then
+            echo "ENV_NAME=staging" >> $GITHUB_ENV
+            echo Commit: ${{ github.sha }}
+            git config user.name  ${{ secrets.GIT_USERNAME }}
+            git config user.email ${{ secrets.GIT_EMAIL }}
+            cat dojah-staging/values/${{ secrets.PROJECT_NAME }}.yaml
+            echo Updating tags
+            sed -i 's/\('tag': \)\(.*\)/\1'$TAG'/' dojah-staging/values/${{ secrets.PROJECT_NAME }}.yaml
+            git add .
+            git commit -m "${{ secrets.PROJECT_NAME }} - ${{ github.sha }} - ${{ github.actor }}"
+            # Push quietly to prevent showing the token in log
+            git push -q https://github.com/dojah-inc/dojah-devops-template.git main
+          else
+            echo "ENV_NAME=unknown" >> $GITHUB_ENV
+          fi
+        env:
+          GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+          GIT_PASSWORD: ${{ secrets.GIT_PASSWORD }}
+          PROJECT_NAME: ${{ secrets.PROJECT_NAME }}
+          GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
