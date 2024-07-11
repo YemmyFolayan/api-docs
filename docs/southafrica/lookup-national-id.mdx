@@ -1,31 +1,52 @@
 ---
 title: "SA National ID"
 mode: "wide"
-description: "Sample Guides, whatever, Introduction to guides and whatnot"
+description: "This endpoint allows you to Lookup a South African National ID."
 ---
 
-Welcome to the world of Dojah, where onboarding, fraud detection and fraud monitoring is made simple, secure, and accessible. We understand the ever-growing need for businesses to onboard customers swiftly and confidently, while ensuring compliance with stringent regulations. Dojah empowers you to achieve both, seamlessly.
 
-Whether you're a seasoned developer or a business user with minimal technical expertise, Dojah provides the solutions you need to:
+### Request
 
-> **Onboard customers faster**: Streamline the onboarding process with Easy Onboard, our intuitive API that lets you verify identities in seconds.
->
-> **Enhance your security**: Ensure the legitimacy of your customers with Easy Connect, which offers real-time identity verification using advanced biometric technology.
->
-> **Mitigate fraud effectively**: Prevent fraudulent activities with Easy Detect, our AI-powered tool that detects suspicious activity with exceptional accuracy.
+```text [GET]
+{{baseURL}}/api/v1/za/kyc/id
+```
 
-> **Gain valuable insights**: Access comprehensive reports and data insights with Easy Lookup, helping you better understand your customer base and make informed decisions.
+### Header
 
-With Dojah, you can:
+| Parameter | Type | Description |
+| --- | --- | --- |
+| AppId | string | you would need to create an app to get your app ID |
+| Authorization | string | public secret key e.g prod\_sk\_1T1eSavlZxy02OT3OWlvbxK4G |
 
-> **Increase customer satisfaction**: Provide a smooth, frictionless onboarding experience for your customers.
->
-> **Reduce operational costs**: Eliminate the need for manual verification processes and associated costs.
->
-> **Improve compliance**: Ensure adherence to KYC and AML regulations with confidence.
->
-> **Scale your business**: Build secure and scalable customer verification solutions that grow with your business.
+### Query partner
 
-Dojah is your trusted partner in building a secure and compliant future for your business.
+| Parameter | Type | Description |  |
+| --- | --- | --- | --- |
+| id\_number \* | string | South African National ID Number | required |
+| with\_photo | boolean | default is false |  |
 
-Get started today and experience the power of Dojah!
+### Sample Response
+
+```json Response
+{
+    "entity": {
+       "birth_place_country": "SOUTH AFRICA",
+       "birth_place_country_code": "ZAF",
+       "booked_date": "2017-11-23",
+       "card_date": "2017-11-23",
+       "date_of_birth": "1999-06-10",
+       "full_name": "PULENG KHUMALO",
+       "gender": "Female",
+       "id_blocked": "NO",
+       "id_number": "9906123456789",
+       "issued_date": "2017-11-23",
+       "last_name": "KHUMALO",
+       "maiden_name": "",
+       "marital_status": "SINGLE",
+       "on_HANIS": "YES",
+       "on_NPR": "YES",
+       "photo": "BASE 64 IMAGE",
+       "smart_card_issued": "YES"
+    }
+}
+```
