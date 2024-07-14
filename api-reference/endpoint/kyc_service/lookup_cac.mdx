@@ -1,16 +1,14 @@
 ---
-title: "Lookup Voter's ID"
-api: "GET https://api.dojah.io/api/v1/kyc/vin"
-description: "This endpoint allows you to fetch a person's details using the Voter's Identification Number of the Individual."
+title: "Lookup CAC"
+api: "GET https://api.dojah.io/api/v1/kyc/cac"
+description: ""
 ---
 
+### What is CAC?
 
-### What is a BVN?
+It is a certificate that shows that a company is registered and exist in a country
 
-BVN means Bank Verification Number. It is a unique identity given to users that can be verified across the Nigerian Banking Industry
-
-An endpoint that validates the BVN authenticating whether it is true or false
-
+This endpoint to fetch and verify SMEs, corporate organizations and individuals using Corporate Affairs Commission (CAC)
 
 ### Response
 
@@ -21,7 +19,7 @@ An endpoint that validates the BVN authenticating whether it is true or false
 <RequestExample>
 
 ```bash Example Request
-curl --location --request GET 'https://api.dojah.io/api/v1/kyc/bvn' \
+curl --location --request GET 'https://api.dojah.io/api/v1/api/user' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Token <token>' \
 --header 'AppId: AppId <appId>' \

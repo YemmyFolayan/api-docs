@@ -79,9 +79,38 @@ button.addEventListener('click', function () {
 | metadata     | object   | Your application's metadata to be passed back to you via webhook, onSuccess, or onError                                                              |
 | onSuccess    | function | This is called when your user has successfully completed enrollment with their preferred institution. **The sample response data below is passed to the widget**  |
 | onError      | function | This is called when your user was unable to successfully complete enrollment.                                                                        |
-| onClose      | function | This is called when the widget is closed.                                                                                                            |
+| onClose      | function | This is called when the widget is closed.  |                                                                                                          |
 
 
+
+
+## Typescript implementation
+
+If you want to use typescript on some classes that are not available now or in the future, you could look at extending the global 'window' interface. You can follow below steps to guide you:
+With typescript, you need to extend the global Window interface with additional properties.
+Create a new folder "types"
+Add a file "index.d.ts"
+Put below code inside your "index.d.ts" file
+
+```typescript typescript
+export { };
+declare global {
+    interface Window {
+        Connect: any;
+	//add more properties you would like to extend
+    }
+}
+```
+
+
+set your compilerOptions "typeRoots" property to path of your type folder
+E.g ["./src/types"]
+Use the extended window property anywhere like this:
+
+```typescript typescript
+const connect = new window.Connect(options);
+
+```
 
 **Step 3: Handle a Successful Verification**
 
@@ -101,114 +130,273 @@ Kindly use the overall status (**response.status** (Boolean, i.e true or false))
 > 
 > Example : **webhook : true**
 
-```json webhook response
+**The Sample response data after successful verification**
+
+```json Response
 {
-  "metadata": {
-   // Any other metadata you pass to the widget will also be listed here
-    "user_id": '12xxxxsxsxsxssx1',
-    "deviceInfo": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0",
-    "ipInfo": {
-      "status": "success",
-      "country": "Nigeria",
-      "countryCode": "NG",
-      "region": "LA",
-      "regionName": "Lagos",
-      "city": "Lagos",
-      "zip": "",
-      "lat": 6.4474,
-      "lon": 3.3903,
-      "timezone": "Africa/Lagos",
-      "isp": "MTN NIGERIA Communication limited",
-      "org": "MTN Nigeria",
-      "as": "AS29465 MTN NIGERIA Communication limited",
-      "query": "102.89.33.XX"
-    }
-  },
-  "data": {
-    "index": {
-      "data": {},
-      "status": true,
-      "message": "Successfully continued to the main checks."
+    metadata: {
+        ipinfo: {
+            status: "success",
+            country: "United States",
+            regionName: "Texas",
+            city: "Dallas",
+            district: "",
+            zip: "75247",
+            lat: 32.8137,
+            lon: -96.8704,
+            timezone: "America/Chicago",
+            isp: "QuadraNet Enterprises LLC",
+            org: "QuadraNet, Inc",
+            as: "AS8100 QuadraNet Enterprises LLC",
+            mobile: false,
+            proxy: true,
+            hosting: true,
+            query: "155.94.251.121"
+        },
+        device_info: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
     },
-    "countries": {
-      "data": {
-        "country": "Nigeria"
-      },
-      "status": true,
-      "message": "Successfully continued to the next step."
+    data: {
+        index: {
+            data: {},
+            message: "Successfully continued to the main checks.",
+            status: true
+        },
+        countries: {
+            data: {
+                country: "Nigeria"
+            },
+            message: "Successfully continued to the next step.",
+            status: true
+        },
+        email: {
+            data: {
+                email: "michael@gmail.com"
+            },
+            status: true,
+            message: "michael@gmail.com validation Successful"
+        },
+        user-data: {
+            data: {
+                firstName: "Michael",
+                lastName: "Folayan",
+                dob: "1998-05-16"
+            },
+            message: "",
+            status: true
+        },
+        phone-number: {
+            data: {
+                phone: "+2348103817187"
+            },
+            message: "+2348103817187 validation Successful",
+            status: true
+        },
+        selfie: {
+            data: {
+                selfieUrl: "https://dojah-kyc.s3.us-east-2.amazonaws.com/sandbox_kyc_image.png"
+            },
+            message: "Successfully validated your liveness",
+            status: true
+        },
+        government-data: {
+            data: {
+                entity: {
+                    title: "",
+                    nationality: "",
+                    bvn: "22300230659",
+                    first_name: "VERONICA",
+                    middle_name: "",
+                    last_name: "ASAR",
+                    date_of_birth: "22-Apr-1980",
+                    phone_number1: "08011111111",
+                    phone_number2: "",
+                    gender: "Female",
+                    enrollment_bank: "",
+                    enrollment_branch: "",
+                    email: "",
+                    lga_of_origin: "",
+                    lga_of_residence: "",
+                    marital_status: "",
+                    nin: "",
+                    name_on_card: "",
+                    residential_address: "",
+                    state_of_origin: "",
+                    state_of_residence: "",
+                    watch_listed: "",
+                    level_of_account: "",
+                    registration_date: "",
+                    customer: "6bb82c41-e15e-4308-b99d-e9640818eca9",
+                    image_url: "https://dojah-kyc.s3-us-east-2.amazonaws.com/John_Doe_1688377760081373.jpg"
+                },
+                message: "",
+                status: true
+            }
+        },
+        id: {
+            data: {
+                idUrl: "https://dojah-files.s3.us-east-2.amazonaws.com/sandbox_verification_placeholder.png",
+                backUrl: "https://dojah-files.s3.us-east-2.amazonaws.com/sandbox_verification_placeholder.png",
+                idData: {
+                    first_name: "John",
+                    last_name: "Doe",
+                    middle_name: "",
+                    nationality: "Nigerian",
+                    mrz_status: "",
+                    expiry_date: "2020-01-01",
+                    document_type: "National ID",
+                    document_number: "123456789",
+                    date_of_birth: "1990-01-01",
+                    date_issued: "2019-01-01",
+                    extras: ""
+                }
+            },
+            status: true,
+            message: "Successfully verified your id"
+        },
+        business-data: {
+            business_name: null,
+            business_number: null,
+            business_type: "BN",
+            registration_date: null,
+            business_address: null
+        },
+        business-id: {
+            business_name: "ABC Company LIMITED",
+            business_type: "Business",
+            business_number: "1237654",
+            business_address: "",
+            registration_date: "",
+            image_url: "https://dojah-kyc.s3.us-east-2.amazonaws.com/sandbox_kyc_image.png"
+        },
+        address: {
+            message: "Successfully verified your address",
+            status: true,
+            data: {
+                location: {
+                    userLocation: {
+                        latitude: "6.6013817",
+                        longitude: "3.2806906",
+                        name: "31 Road, Round About, Gowon Estate Alimosho, 100001, Lagos, Nigeria"
+                    },
+                    addressLocation: {
+                        latitude: "6.5765376",
+                        longitude: "3.3292288"
+                    }
+                }
+            }
+        },
+        additional-document: [
+            {
+                document_type: "image",
+                document_url: "https://dojah-images.s3.amazonaws.com/652900d3f3a8a1003fdd5b71374eb32a-689d-4185-8921-78f524cd7eae.jpeg"
+            }
+        ]
     },
-    "phonenumber": {
-      "data": {
-        "mobile": "+234819999999999"
-      },
-      "status": true,
-      "message": "Successfully continued to the next step."
+    businessData: {
+        business_name: null,
+        business_number: null,
+        business_type: "BN",
+        registration_date: null,
+        business_address: null
     },
-    "user-data": {
-      "status": true,
-      "data": {
-        "firstName": "JOHN",
-        "lastName": "DOE",
-        "dob": "1997-12-10"
-      },
-      "message": ""
+    businessId: {
+        business_name: "ABC Company LIMITED",
+        business_type: "Business",
+        business_number: "1237654",
+        business_address: "",
+        registration_date: "",
+        image_url: "https://dojah-kyc.s3.us-east-2.amazonaws.com/sandbox_kyc_image.png"
     },
-    "government-data": {
-      "data": {
-        "entity": {
-          "nin": "12334567899",
-          "firstname": "JOHN",
-          "middlename": "DOJAH",
-          "surname": "DOE",
-          "maidenname": "",
-          "telephoneno": "0809999999999",
-          "state": "Imo",
-          "place": "MBUTU",
-          "profession": "STUDENT",
-          "title": "mr",
-          "height": "****",
-          "email": "",
-          "birthdate": "1997-12-10",
-          "birthstate": "Lagos",
-          "birthcountry": "nigeria",
-          "centralID": "8051646",
-          "documentno": "",
-          "educationallevel": "",
-          "employmentstatus": "",
-          "othername": "",
-          "pfirstname": "",
-          "photo": "/9j/4AAQSkZJRgABAAAQUBAQEBAQEAAAAAAAAAAAEC",
-          "pmiddlename": "",
-          "psurname": "",
-          "nspokenlang": "IGBO",
-          "ospokenlang": "ENGLISH",
-          "religion": "christianity",
-          "residence_Town": "OJO",
-          "residence_lga": "Ojo",
-          "residence_state": "Lagos",
-          "residencestatus": "birth",
-          "residence_AddressLine1": "CAMP 5 BLOCK 8 ROOM 7 NIGERIAN ARMY CANTONMENT",
-          "residence_AddressLine2": "CAMP 5 BLOCK 8 ROOM 7 NIGERIAN ARMY CANTONMENT",
-          "self_origin_lga": "Ojo",
-          "self_origin_place": "",
-          "self_origin_state": "Lagos",
-          "signature":"/9j/4AAQSkZJRgABAAAQUBAQEBAQEAAAAAAAAAAAEC",
-          "nationality": "",
-          "gender": "m",
-          "trackingId": "S7Y0NYFM1000468",
-          "customer": "365eb08f-6a1d-46bc-9aa0-XXXXXXXX"
+    governmentData: {
+        title: "",
+        nationality: "",
+        bvn: "22300230659",
+        first_name: "VERONICA",
+        middle_name: "",
+        last_name: "ASAR",
+        date_of_birth: "22-Apr-1980",
+        phone_number1: "08011111111",
+        phone_number2: "",
+        gender: "Female",
+        enrollment_bank: "",
+        enrollment_branch: "",
+        email: "",
+        lga_of_origin: "",
+        lga_of_residence: "",
+        marital_status: "",
+        nin: "",
+        name_on_card: "",
+        residential_address: "",
+        state_of_origin: "",
+        state_of_residence: "",
+        watch_listed: "",
+        level_of_account: "",
+        registration_date: "",
+        customer: "6bb82c41-e15e-4308-b99d-e9640818eca9",
+        image_url: "https://dojah-kyc.s3-us-east-2.amazonaws.com/John_Doe_1688377760081373.jpg"
+    },
+    userDetails: {
+        title: "",
+        nationality: "",
+        bvn: "22300230659",
+        first_name: "VERONICA",
+        middle_name: "",
+        last_name: "ASAR",
+        date_of_birth: "22-Apr-1980",
+        phone_number1: "08011111111",
+        phone_number2: "",
+        gender: "Female",
+        enrollment_bank: "",
+        enrollment_branch: "",
+        email: "",
+        lga_of_origin: "",
+        lga_of_residence: "",
+        marital_status: "",
+        nin: "",
+        name_on_card: "",
+        residential_address: "",
+        state_of_origin: "",
+        state_of_residence: "",
+        watch_listed: "",
+        level_of_account: "",
+        registration_date: "",
+        customer: "6bb82c41-e15e-4308-b99d-e9640818eca9",
+        image_url: "https://dojah-kyc.s3-us-east-2.amazonaws.com/John_Doe_1688377760081373.jpg"
+    },
+    idType: "BVN",
+    value: "1234",
+    additionalDocument: [
+        {
+            document_type: "image",
+            document_url: "https://dojah-images.s3.amazonaws.com/652900d3f3a8a1003fdd5b71374eb32a-689d-4185-8921-78f524cd7eae.jpeg"
         }
-      },
-      "message": "",
-      "status": true
-    }
-  },
-  "selfieUrl": "https://dojah-images.s3.amazonaws.com/633d5225b93aae0034ba243dface.jpeg",
-  "verificationId": 29928,
-  "verificationUrl": "https://app.dojah.io/verifications/bio-data/DJ-78BD664121",
-  "referenceId": "DJ-78BD664121",
-  "verificationType": "nin",
-  "verificationValue": "12334567899",
-  "verificationMode": "selfie",
+    ],
+    idData: {
+        first_name: "John",
+        last_name: "Doe",
+        middle_name: "",
+        nationality: "Nigerian",
+        mrz_status: "",
+        expiry_date: "2020-01-01",
+        document_type: "National ID",
+        document_number: "123456789",
+        date_of_birth: "1990-01-01",
+        date_issued: "2019-01-01",
+        extras: ""
+    },
+    idUrl: "https://dojah-files.s3.us-east-2.amazonaws.com/sandbox_verification_placeholder.png",
+    backUrl: "https://dojah-files.s3.us-east-2.amazonaws.com/sandbox_verification_placeholder.png",
+    message: "Successfully completed the verification.",
+    referenceId: "DJ-94D5A85B12",
+    verificationMode: "LIVENESS",
+    verificationType: "RC-NUMBER",
+    verificationValue: "1234",
+    verificationUrl: "https://app.dojah.io/verifications/bio-data/DJ-94D5A85B12",
+    selfieUrl: "https://dojah-kyc.s3.us-east-2.amazonaws.com/sandbox_kyc_image.png",
+    status: true,
+    aml: {
+        status: false
+    },
+    verificationStatus: "Completed"
 }
 ```

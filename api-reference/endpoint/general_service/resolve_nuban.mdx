@@ -1,15 +1,15 @@
 ---
-title: "Lookup Voter's ID"
-api: "GET https://api.dojah.io/api/v1/kyc/vin"
-description: "This endpoint allows you to fetch a person's details using the Voter's Identification Number of the Individual."
+title: "Resolve Nuban"
+api: "GET https://api.dojah.io/api/v1/general/account"
+description: ""
 ---
 
 
-### What is a BVN?
+What is a NUBAN?
 
-BVN means Bank Verification Number. It is a unique identity given to users that can be verified across the Nigerian Banking Industry
+NUBAN means Nigerian Uniform Bank Account Number. It is the standardized system for numbering bank accounts in Nigeria
 
-An endpoint that validates the BVN authenticating whether it is true or false
+Resolve NUBAN is an endpoint fetches all the information associated with a NUBAN
 
 
 ### Response
@@ -21,7 +21,7 @@ An endpoint that validates the BVN authenticating whether it is true or false
 <RequestExample>
 
 ```bash Example Request
-curl --location --request GET 'https://api.dojah.io/api/v1/kyc/bvn' \
+curl --location --request GET 'https://api.dojah.io/api/v1/general/account' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Token <token>' \
 --header 'AppId: AppId <appId>' \

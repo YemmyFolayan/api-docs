@@ -26,7 +26,19 @@
     {
       "name": "API Reference",
       "url": "api-reference"
+    },
+
+    {
+      "name": "Changelog",
+      "url": "changelog"
+    },
+
+    {
+      "name": "Test data",
+      "url": "test-data"
     }
+
+
   ],
   
   "navigation": [
@@ -340,7 +352,122 @@
     
     
   ]
+},
+
+
+{
+  "group": "INTRODUCTION",
+  "pages": [
+    "api-reference/introduction",
+    "api-reference/environment"
+   
+  ]
+},
+
+{
+      "group": "GET BALANCE",
+      "pages": [
+        "api-reference/endpoint/get_balance"
+       
+      ]
+},
+
+{
+  "group": "KYC SERVICES",
+  "pages": [
+    "api-reference/endpoint/kyc_service/lookup_bvn",
+    "api-reference/endpoint/kyc_service/lookup_phone_basic",
+    "api-reference/endpoint/kyc_service/lookup_phone_advance",
+    "api-reference/endpoint/kyc_service/lookup_nuban",
+    "api-reference/endpoint/kyc_service/lookup_vnin",   
+    "api-reference/endpoint/kyc_service/lookup_nin",
+    "api-reference/endpoint/kyc_service/lookup_driver_license", 
+    "api-reference/endpoint/kyc_service/lookup_voters",   
+    "api-reference/endpoint/kyc_service/validate_bvn",
+    "api-reference/endpoint/kyc_service/validate_passport",
+    "api-reference/endpoint/kyc_service/lookup_tin",
+    "api-reference/endpoint/kyc_service/lookup_cac",
+    "api-reference/endpoint/kyc_service/age_verification",
+    "api-reference/endpoint/kyc_service/email_reputation"
+
+  ]
+}, 
+
+
+{
+  "group": "SELFIE VERIFICATION",
+  "pages": [
+    "api-reference/endpoint/selfie_verification/verify_bvn_selfie",
+    "api-reference/endpoint/selfie_verification/verify_nin_selfie",
+    "api-reference/endpoint/selfie_verification/verify_photo_selfie"
+
+  ]
+},
+
+{
+  "group": "GENERAL SERVICES",
+  "pages": [
+    "api-reference/endpoint/general_service/fetch_bank",
+    "api-reference/endpoint/general_service/resolve_nuban",
+    "api-reference/endpoint/general_service/resolve_card_bin"
+
+  ]
+}, 
+
+
+{
+  "group": "BILL SERVICES",
+  "pages": [
+    "api-reference/endpoint/bill_service/buy_airtime",
+    "api-reference/endpoint/bill_service/check_data_plan",
+    "api-reference/endpoint/bill_service/buy_data"
+
+  ]
+}, 
+
+
+{
+  "group": "MESSAGING SERVICES",
+  "pages": [
+    "api-reference/endpoint/message_service/introduction",
+    "api-reference/endpoint/message_service/send_sms",
+    "api-reference/endpoint/message_service/message_status",
+    "api-reference/endpoint/message_service/request_sender_id",
+    "api-reference/endpoint/message_service/fetch_sender_id",
+    "api-reference/endpoint/message_service/send_otp",
+    "api-reference/endpoint/message_service/validate_otp"
+
+  ]
+}, 
+
+{
+  "group": "WEBHOOKS",
+  "pages": [
+    "api-reference/endpoint/webhook_service/subscribe_webhook",
+    "api-reference/endpoint/webhook_service/fetch_webhook",
+    "api-reference/endpoint/webhook_service/delete_webhook"
+  ]
+},
+
+
+{
+  "group": "Changelog",
+  "pages": [
+    "changelog/api_changes",
+    "changelog/product_updates"
+   
+  ]
+},
+
+{
+  "group": "Test data",
+  "pages": [
+    "test-data/sandbox_data"
+  
+  ]
 }
+
+
   ],
   "footerSocials": {
     "x": "https://twitter.com/DojahInc",

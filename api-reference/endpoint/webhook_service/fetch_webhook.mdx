@@ -1,15 +1,8 @@
 ---
-title: "Lookup Voter's ID"
-api: "GET https://api.dojah.io/api/v1/kyc/vin"
-description: "This endpoint allows you to fetch a person's details using the Voter's Identification Number of the Individual."
+title: "Fetch all Subscriptions"
+api: "GET https://api.dojah.io/api/v1/webhook/fetch"
+description: "An endpoint that allows you to fetch all subscriptions"
 ---
-
-
-### What is a BVN?
-
-BVN means Bank Verification Number. It is a unique identity given to users that can be verified across the Nigerian Banking Industry
-
-An endpoint that validates the BVN authenticating whether it is true or false
 
 
 ### Response
@@ -21,7 +14,7 @@ An endpoint that validates the BVN authenticating whether it is true or false
 <RequestExample>
 
 ```bash Example Request
-curl --location --request GET 'https://api.dojah.io/api/v1/kyc/bvn' \
+curl --location --request GET 'https://api.dojah.io/api/v1/webhook/fetch' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Token <token>' \
 --header 'AppId: AppId <appId>' \
