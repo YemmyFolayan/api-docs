@@ -1,68 +1,82 @@
 ---
-title: "Lookup BVN"
+title: "Validate BVN"
 api: "GET https://api.dojah.io/api/v1/kyc/bvn/full"
 description: "This endpoint allows you to Lookup BVN and get detailed information on the BVN Identity"
 ---
 
 
-### What is a BVN?
-BVN means Bank Verification Number. It is a unique identity given to users that can be verified across the Nigerian Banking Industry
+<ParamField query="bvn" type="string" required>
+  A valid Bank Verification Number (BVN)
+</ParamField>
 
-An endpoint that validates the BVN authenticating whether it is true or false
+<ParamField query="first_name" type="string" required>
+  First name associated with the BVN
+</ParamField>
 
-### Response
+<ParamField query="last_name" type="string" required>
+  Last name associated with the BVN
+</ParamField>
 
-<ResponseField name="wallet_balance" type="string">
-    Wallet balance 
+<ParamField query="dob" type="string" default="YYYY-MM-DD" required>
+  Date of Birth
+</ParamField>
+
+
+
+<ResponseField name="200" type="json">
+ json
 </ResponseField>
 
-<RequestExample>
+<ResponseField name="400" type="Object">
+  <Expandable title="properties">
+    <ResponseField name="error" type="string">
+      error message
+    </ResponseField>
 
-```bash Example Request
-curl --location --request GET 'https://api.dojah.io/api/v1/api/user' \
---header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
---header 'AppId: AppId <appId>' \
+  </Expandable>
+</ResponseField>
 
-```
+<ResponseField name="401" type="Object">
+  <Expandable title="properties">
+    <ResponseField name="error" type="string">
+      error message
+    </ResponseField>
 
-</RequestExample>
+  </Expandable>
+</ResponseField>
+
 
 <ResponseExample>
 
-```json Response
+```json 200
 {
   "entity": {
-     "bvn": "22350348240",
-     "first_name": "ADEOLA",
-     "last_name": "AYO",
-     "middle_name": "MICHEAL",
-     "gender": "Male",
-     "date_of_birth": "1972-02-19",
-     "phone_number1": "08099434292",
-     "image": "/9j/3AAQSkZJGgABAgBBBQABAAD/“,
-     "level_of_account": "Level 2 - Medium Level Accounts",
-     "lga_of_origin": "Odo Otin",
-     "lga_of_residence": "Ilorin South",
-     "marital_status": "Single",
-     "name_on_card": "MICHEAL, ADEOLA A",
-     "nationality": "Nigeria",
-     "nin": "",
-     "phone_number1": "08099434292",
-     "phone_number2": "",
-     "reference": "91b126d1-2467-42fc-b8d5-1cbd32257954",
-     "registration_date": "21-Mar-2018",
-     "residential_address": "24, ADELABU OWODE, ILORIN",
-     "state_of_origin": "Osun State",
-     "state_of_residence": "Kwara State",
-     "title": "Mr",
-     "watch_listed": "NO"
+    "bvn": {
+      "value": "22380348250",
+      "status": true
+    },
+    "first_name": {
+      "confidence_value": 100,
+      "status": true
+    },
+    "date_of_birth": {
+      "status": true
     }
+  }
 }
-
-
-
-
 ```
+
+```json 400
+{
+  "error": "Invalid request parameters"
+}
+```
+
+```json 401
+{
+  "error": "App Couldn't be Validated"
+}
+```
+
 
 </ResponseExample>

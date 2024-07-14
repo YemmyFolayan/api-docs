@@ -6,32 +6,52 @@ description: "This end point allows you to easily fetch your wallet balance on t
 ---
 
 
-### Response
+<ResponseField name="200" type="Object">
+  <Expandable title="properties">
+    <ResponseField name="wallet_balance" type="string">
+      Wallet balance 
+    </ResponseField>
 
-<ResponseField name="wallet_balance" type="string">
-    Wallet balance 
+  </Expandable>
 </ResponseField>
 
-<RequestExample>
 
-```bash Example Request
-curl --location --request GET 'https://api.dojah.io/api/v1/api/user' \
---header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
---header 'AppId: AppId <appId>' \
 
-```
+<ResponseField name="401" type="Object">
+  <Expandable title="properties">
+    <ResponseField name="error" type="string">
+      error message
+    </ResponseField>
 
-</RequestExample>
+  </Expandable>
+</ResponseField>
+
+
+
+
 
 <ResponseExample>
 
-```json Response
+```json 200
 {
   "entity": {
     "wallet_balance": "14132.00"
   }
 }
 ```
+
+```json 400
+{
+  "error": "Invalid request parameters"
+}
+```
+
+```json 401
+{
+  "error": "App Couldn't be Validated"
+}
+```
+
+
 
 </ResponseExample>

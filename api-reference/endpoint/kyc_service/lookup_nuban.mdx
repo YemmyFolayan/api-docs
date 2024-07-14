@@ -1,70 +1,86 @@
 ---
 title: "Lookup NUBAN"
 api: "GET https://api.dojah.io/api/v1/kyc/nuban"
-description: ""
+description: "An endpoint that allows you can identify your users through Lookup NUBAN"
 ---
 
-> What is NUBAN?
-> NUBAN means Nigerian Uniform Bank Account Number. 
-> It is standardized system for numbering bank accounts in Nigeria
-
-An endpoint that allows you can identify your users through Lookup NUBAN
+## What is NUBAN?
+NUBAN means Nigerian Uniform Bank Account Number. 
+It is standardized system for numbering bank accounts in Nigeria
 
 
 
-### Response
+<ParamField query="account_number" type="string" required>
+  Account Number of user
+</ParamField>
 
-<ResponseField name="wallet_balance" type="string">
-    Wallet balance 
+<ParamField query="bank_code" type="string" required>
+  Bank code associated with the bank
+</ParamField>
+
+
+
+<ResponseField name="200" type="json">
+ json
 </ResponseField>
 
-<RequestExample>
+<ResponseField name="400" type="Object">
+  <Expandable title="properties">
+    <ResponseField name="error" type="string">
+      error message
+    </ResponseField>
 
-```bash Example Request
-curl --location --request GET 'https://api.dojah.io/api/v1/kyc/nuban' \
---header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
---header 'AppId: AppId <appId>' \
+  </Expandable>
+</ResponseField>
 
-```
+<ResponseField name="401" type="Object">
+  <Expandable title="properties">
+    <ResponseField name="error" type="string">
+      error message
+    </ResponseField>
 
-</RequestExample>
+  </Expandable>
+</ResponseField>
+
 
 <ResponseExample>
 
-```json Response
+```json 200
 {
   "entity": {
-     "bvn": "22350348240",
-     "first_name": "ADEOLA",
-     "last_name": "AYO",
-     "middle_name": "MICHEAL",
-     "gender": "Male",
-     "date_of_birth": "1972-02-19",
-     "phone_number1": "08099434292",
-     "image": "/9j/3AAQSkZJGgABAgBBBQABAAD/“,
-     "level_of_account": "Level 2 - Medium Level Accounts",
-     "lga_of_origin": "Odo Otin",
-     "lga_of_residence": "Ilorin South",
-     "marital_status": "Single",
-     "name_on_card": "MICHEAL, ADEOLA A",
-     "nationality": "Nigeria",
-     "nin": "",
-     "phone_number1": "08099434292",
-     "phone_number2": "",
-     "reference": "91b126d1-2467-42fc-b8d5-1cbd32257954",
-     "registration_date": "21-Mar-2018",
-     "residential_address": "24, ADELABU OWODE, ILORIN",
-     "state_of_origin": "Osun State",
-     "state_of_residence": "Kwara State",
-     "title": "Mr",
-     "watch_listed": "NO"
-    }
+    "account_name": "ADE MICHEAL KOLAWOLE",
+    "identity_number": "22231426256",
+    "identity_type": "BVN",
+    "bank": "First Bank",
+    "account_currency": "NGN",
+    "first_name": "",
+    "last_name": "",
+    "other_names": "",
+    "gender": "",
+    "dob": "",
+    "phone": "",
+    "postal_code": "",
+    "state_code": "",
+    "country_code": "",
+    "country_of_birth": "",
+    "nationality": "",
+    "expiry_date": "",
+    "address_1": "",
+    "address_2": ""
+  }
 }
-
-
-
 
 ```
 
+```json 400
+{
+  "error": "Invalid request parameters"
+}
+```
+
+```json 401
+{
+  "error": "App Couldn't be Validated"
+}
+```
 </ResponseExample>

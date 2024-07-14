@@ -11,6 +11,14 @@
     "light": "#3498db",
     "dark": "#3498db"
   },
+  "api": {
+
+    "auth": {
+        "method": "key",
+        "name": "Authorization"
+    }
+},
+
   "topbarLinks": [
 
   ],

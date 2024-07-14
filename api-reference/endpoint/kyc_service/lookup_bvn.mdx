@@ -5,27 +5,38 @@ description: "This endpoint allows you to Lookup BVN and get detailed informatio
 ---
 
 
-### Response
+<ParamField query="bvn" type="string" required>
+  A valid Bank Verification Number (BVN)
+</ParamField>
 
-<ResponseField name="wallet_balance" type="string">
-    Wallet balance 
+
+
+<ResponseField name="200" type="json">
+ json
 </ResponseField>
 
-<RequestExample>
+<ResponseField name="400" type="Object">
+  <Expandable title="properties">
+    <ResponseField name="error" type="string">
+      error message
+    </ResponseField>
 
-```bash Example Request
-curl --location --request GET 'https://api.dojah.io/api/v1/api/user' \
---header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
---header 'AppId: AppId <appId>' \
+  </Expandable>
+</ResponseField>
 
-```
+<ResponseField name="401" type="Object">
+  <Expandable title="properties">
+    <ResponseField name="error" type="string">
+      error message
+    </ResponseField>
 
-</RequestExample>
+  </Expandable>
+</ResponseField>
+
 
 <ResponseExample>
 
-```json Response
+```json 200
 {
   "entity": {
      "bvn": "22350348240",
@@ -54,10 +65,19 @@ curl --location --request GET 'https://api.dojah.io/api/v1/api/user' \
      "watch_listed": "NO"
     }
 }
-
-
-
-
 ```
+
+```json 400
+{
+  "error": "Invalid request parameters"
+}
+```
+
+```json 401
+{
+  "error": "App Couldn't be Validated"
+}
+```
+
 
 </ResponseExample>
