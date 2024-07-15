@@ -7,27 +7,27 @@ Dojah uses webhooks to let your application know when events happen, such as rec
 
 This endpoint allows you to Subscribe to Dojah's webhook service
 
-### [](https://api-docs.dojah.io/docs/subscribe-to-services#request)
+### Request
 
 ```text [POST]
 {{baseUrl}}api/v1/webhook/subscribe
 ```
 
-### [](https://api-docs.dojah.io/docs/subscribe-to-services#header)
+### Headers
 
 | Parameter | Type | Description |
 | --- | --- | --- |
 | AppId | string | you would need to create an app to get your app ID |
 | Authorization | string | private secret key e.g prod_sk_1T1eSavlZxy02OT3OWlvbxK4G |
 
-### [](https://api-docs.dojah.io/docs/subscribe-to-services#body)
+### Body Params
 
 | Key | Type | Description |
 | --- | --- | --- |
 | webhook | string | **webhook** is the webhook url that allows Dojah to send (i.e “push”) data to your application as soon as an event occurs, Create a Test webhook url on [webhook.site](https://webhook.site/). Example [https://webhook.site/db8ad2b6-91b6-485b-9761-e546b540ccf6](https://webhook.site/db8ad2b6-91b6-485b-9761-e546b540ccf6) |
 | service | string | Type of services \[ **sms**, **ngn_wallet**, **kyc_widget**, **address**, , **AML Monitoring**\]\] |
 
-### [](https://api-docs.dojah.io/docs/subscribe-to-services#response)
+### Response
 
 ```json Response
 {
@@ -75,10 +75,12 @@ The webhook content description
 
 Subscribe to Service on Dojah Dashboard [here](https://app.dojah.io/developers/webhooks)
 
-![Click on Subscribe Button](https://files.readme.io/b551361-Screenshot_2023-07-13_at_9.27.19_AM.png)
+![Click on Subscribe Button](/images/webhook.png)
+
+
 
 Click on Subscribe Button
 
-![Fill in the Webhook details](https://files.readme.io/26a9e59-Screenshot_2023-07-13_at_9.27.32_AM.png)
+![Fill in the Webhook details](/images/webhookmore.png)
 
 Fill in the Webhook details

@@ -331,7 +331,7 @@
       
         {
           "group": "Configuration",
-          "pages": ["guides/reporting/developers/configuration/create-app",  "guides/reporting/developers/configuration/api-key", "guides/reporting/developers/configuration/webhook"]
+          "pages": ["guides/reporting/developers/configuration/create-app",  "guides/reporting/developers/configuration/api-key",  "guides/reporting/developers/configuration/sandbox-live", "guides/reporting/developers/configuration/webhook"]
       
           
         }
