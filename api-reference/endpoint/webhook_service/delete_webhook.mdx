@@ -5,25 +5,37 @@ description: "An endpoint that allows you to delete subscription"
 ---
 
 
-<ParamField path="param" type="string">
-  An example of a parameter field
-</ParamField>
-
-<ParamField query="filter" type="string" default="none" required>
-  The filtering command used to sort through the users
-</ParamField>
-
-
-<ParamField body="service" type="string" default="kyc_widget" required>
- The name of service to be deleted e.g sms, ngn_wallet, kyc_widget
+#### BODY PARAMS
+ 
+<ParamField body="service" type="string" required>
+  The name of service to be deleted e.g sms, ngn_wallet
 </ParamField>
 
 
 
-<ResponseField name="wallet_balance" type="string">
-    Wallet balance 
+#### RESPONSES
+
+<ResponseField name="200" type="json">
+ json
 </ResponseField>
 
+<ResponseField name="400" type="Object">
+  <Expandable title="properties">
+    <ResponseField name="error" type="string">
+      error message
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="401" type="Object">
+  <Expandable title="properties">
+    <ResponseField name="error" type="string">
+      error message
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
 
 
 <ResponseExample>
@@ -47,26 +59,4 @@ description: "An endpoint that allows you to delete subscription"
 ```
 
 
-
 </ResponseExample>
-
-
-<ResponseField name="response" type="string" required>
-  A response field example
-</ResponseField>
-
-
-
-<ResponseField name="user" type="User Object">
-  <Expandable title="properties">
-    <ResponseField name="full_name" type="string">
-      The full name of the user
-    </ResponseField>
-
-    <ResponseField name="is_over_21" type="boolean">
-      Whether the user is over 21 years old
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-

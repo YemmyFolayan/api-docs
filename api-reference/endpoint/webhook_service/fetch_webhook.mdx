@@ -5,59 +5,68 @@ description: "An endpoint that allows you to fetch all subscriptions"
 ---
 
 
-### Response
+#### RESPONSES
 
-<ResponseField name="wallet_balance" type="string">
-    Wallet balance 
+<ResponseField name="200" type="json">
+ json
 </ResponseField>
 
-<RequestExample>
+<ResponseField name="400" type="Object">
+  <Expandable title="properties">
+    <ResponseField name="error" type="string">
+      error message
+    </ResponseField>
 
-```bash Example Request
-curl --location --request GET 'https://api.dojah.io/api/v1/webhook/fetch' \
---header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
---header 'AppId: AppId <appId>' \
+  </Expandable>
+</ResponseField>
 
-```
+<ResponseField name="401" type="Object">
+  <Expandable title="properties">
+    <ResponseField name="error" type="string">
+      error message
+    </ResponseField>
 
-</RequestExample>
+  </Expandable>
+</ResponseField>
+
 
 <ResponseExample>
 
-```json Response
+```json 200
 {
   "entity": {
-     "bvn": "22350348240",
-     "first_name": "ADEOLA",
-     "last_name": "AYO",
-     "middle_name": "MICHEAL",
-     "gender": "Male",
-     "date_of_birth": "1972-02-19",
-     "phone_number1": "08099434292",
-     "image": "/9j/3AAQSkZJGgABAgBBBQABAAD/“,
-     "level_of_account": "Level 2 - Medium Level Accounts",
-     "lga_of_origin": "Odo Otin",
-     "lga_of_residence": "Ilorin South",
-     "marital_status": "Single",
-     "name_on_card": "MICHEAL, ADEOLA A",
-     "nationality": "Nigeria",
-     "nin": "",
-     "phone_number1": "08099434292",
-     "phone_number2": "",
-     "reference": "91b126d1-2467-42fc-b8d5-1cbd32257954",
-     "registration_date": "21-Mar-2018",
-     "residential_address": "24, ADELABU OWODE, ILORIN",
-     "state_of_origin": "Osun State",
-     "state_of_residence": "Kwara State",
-     "title": "Mr",
-     "watch_listed": "NO"
-    }
+    "webhooks": [
+      {
+        "app_id": "5f3a4c693a7ea9003e4067e6",
+        "endpoint": "https://webhook.site/bc33b503-bf38-4b65-88e5-349d86378d4a",
+        "environment": "live",
+        "service": "sms",
+        "confirmation_status": null,
+        "date_created": "2023-03-18T06:45:37.293746+01:00",
+        "date_updated": "2023-03-18T06:45:37.293806+01:00",
+        "medium": "version 3"
+      }
+    ],
+    "total": 1,
+    "previous_page": "",
+    "next_page": "",
+    "total_pages": 1,
+    "current_page": 1
+  }
 }
-
-
-
-
 ```
+
+```json 400
+{
+  "error": "Invalid request parameters"
+}
+```
+
+```json 401
+{
+  "error": "App Couldn't be Validated"
+}
+```
+
 
 </ResponseExample>

@@ -5,66 +5,55 @@ description: ""
 ---
 
 
-What is a NUBAN?
+## What is a NUBAN?
 
 NUBAN means Nigerian Uniform Bank Account Number. It is the standardized system for numbering bank accounts in Nigeria
 
 Resolve NUBAN is an endpoint fetches all the information associated with a NUBAN
 
 
-### Response
+#### QUERY PARAMS
 
-<ResponseField name="wallet_balance" type="string">
-    Wallet balance 
-</ResponseField>
+<ParamField query="bank_code" type="string" required>
+ Bank code associated with account number
+</ParamField>
 
-<RequestExample>
 
-```bash Example Request
-curl --location --request GET 'https://api.dojah.io/api/v1/general/account' \
---header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
---header 'AppId: AppId <appId>' \
+<ParamField query="account_number" type="string" required>
+</ParamField>
 
-```
 
-</RequestExample>
 
 <ResponseExample>
 
-```json Response
+
+```json 200
 {
   "entity": {
-     "bvn": "22350348240",
-     "first_name": "ADEOLA",
-     "last_name": "AYO",
-     "middle_name": "MICHEAL",
-     "gender": "Male",
-     "date_of_birth": "1972-02-19",
-     "phone_number1": "08099434292",
-     "image": "/9j/3AAQSkZJGgABAgBBBQABAAD/“,
-     "level_of_account": "Level 2 - Medium Level Accounts",
-     "lga_of_origin": "Odo Otin",
-     "lga_of_residence": "Ilorin South",
-     "marital_status": "Single",
-     "name_on_card": "MICHEAL, ADEOLA A",
-     "nationality": "Nigeria",
-     "nin": "",
-     "phone_number1": "08099434292",
-     "phone_number2": "",
-     "reference": "91b126d1-2467-42fc-b8d5-1cbd32257954",
-     "registration_date": "21-Mar-2018",
-     "residential_address": "24, ADELABU OWODE, ILORIN",
-     "state_of_origin": "Osun State",
-     "state_of_residence": "Kwara State",
-     "title": "Mr",
-     "watch_listed": "NO"
-    }
+    "account_number": "4146507207",
+    "account_name": "FEMI ADEWALE KOLAWOLE"
+  }
 }
-
-
-
-
 ```
+
+```json 400
+{
+  "error": "Invalid request parameters"
+}
+```
+
+```json 401
+{
+  "error": "App Couldn't be Validated"
+}
+```
+
+```json 404
+{
+  "error": "Could not resolve account name. Check parameters or try again."
+}
+```
+
+
 
 </ResponseExample>
