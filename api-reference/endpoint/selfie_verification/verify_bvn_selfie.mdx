@@ -4,6 +4,11 @@ api: "POST https://api.dojah.io/api/v1/kyc/bvn/verify"
 description: "This endpoint allows you to Lookup BVN and get detailed information on the BVN Identity"
 ---
 
+<ParamField header="AppId" type="string" required>
+  Application ID from dashboard
+</ParamField>
+
+#### BODY PARAMS
 
 <ParamField body="bvn" type="string" required>
  bank verification number

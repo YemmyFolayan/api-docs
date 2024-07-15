@@ -4,6 +4,10 @@ api: "GET https://api.dojah.io/api/v1/kyc/bvn/full"
 description: "This endpoint allows you to Lookup BVN and get detailed information on the BVN Identity"
 ---
 
+<ParamField header="AppId" type="string" required>
+  Application ID from dashboard
+</ParamField>
+
 #### QUERY PARAMS
  
 <ParamField query="bvn" type="string" required>

@@ -4,6 +4,10 @@ api: "GET https://api.dojah.io/api/v1/kyc/age_verification"
 description: "This endpoints allows you to verify your end-users age and identity using phone number and account number or BVN"
 ---
 
+<ParamField header="AppId" type="string" required>
+  Application ID from dashboard
+</ParamField>
+
 #### QUERY PARAMS
 
 <ParamField query="mode" type="string" required>

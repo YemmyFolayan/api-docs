@@ -4,6 +4,14 @@ api: "POST https://api.dojah.io/api/v1/kyc/photoid/verify"
 description: "An endpoint that allows you to verify an individual using their selfie image and NIN"
 ---
 
+
+<ParamField header="AppId" type="string" required>
+  Application ID from dashboard
+</ParamField>
+
+#### BODY PARAMS
+
+
 <ParamField body="photoid_image" type="string" required>
  Photo image in Base 64 (Passport, NIN, Voter's Card, Driver's License)
 </ParamField>

@@ -4,6 +4,10 @@ api: "GET https://api.dojah.io/api/v1/kyc/passport"
 description: "Validate a Customer's International Passport"
 ---
 
+<ParamField header="AppId" type="string" required>
+  Application ID from dashboard
+</ParamField>
+
 #### QUERY PARAMS
 
 <ParamField query="passport_number" type="string" required>

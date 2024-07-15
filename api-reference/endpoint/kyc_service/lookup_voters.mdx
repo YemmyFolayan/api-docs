@@ -4,6 +4,10 @@ api: "GET https://api.dojah.io/api/v1/kyc/vin"
 description: "This endpoint allows you to fetch a person's details using the Voter's Identification Number of the Individual."
 ---
 
+<ParamField header="AppId" type="string" required>
+  Application ID from dashboard
+</ParamField>
+
 #### QUERY PARAMS
 
 <ParamField query="vin" type="string" required>

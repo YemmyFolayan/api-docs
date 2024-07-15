@@ -4,6 +4,14 @@ api: "POST https://api.dojah.io/api/v1/kyc/nin/verify"
 description: "This endpoint identify and verifies a person using their selfie image and their valid NIN"
 ---
 
+
+<ParamField header="AppId" type="string" required>
+  Application ID from dashboard
+</ParamField>
+
+#### BODY PARAMS
+
+
 <ParamField body="nin" type="string" required>
 national identification number
 </ParamField>

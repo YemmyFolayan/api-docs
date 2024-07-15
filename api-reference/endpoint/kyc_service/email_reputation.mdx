@@ -4,6 +4,10 @@ api: "GET https://api.dojah.io/api/v1/kyc/email"
 description: "This endpoint retrieves information about an email and other information attached to it"
 ---
 
+<ParamField header="AppId" type="string" required>
+  Application ID from dashboard
+</ParamField>
+
 #### QUERY PARAMS
 
 <ParamField query="email" type="string" required>

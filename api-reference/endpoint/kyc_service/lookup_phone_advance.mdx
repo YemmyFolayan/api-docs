@@ -4,6 +4,10 @@ api: "GET https://api.dojah.io/api/v1/kyc/phone_number"
 description: "This endpoint ensures that you get a more robust and detailed information of your customer's phone number"
 ---
 
+<ParamField header="AppId" type="string" required>
+  Application ID from dashboard
+</ParamField>
+
 #### QUERY PARAMS
 
 <ParamField query="phone_number" type="string" required>

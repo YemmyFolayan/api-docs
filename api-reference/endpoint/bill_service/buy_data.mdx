@@ -4,6 +4,10 @@ api: "POST https://api.dojah.io/api/v1/purchase/data/plans"
 description: "An endpoint that allows you have options of internet data plans for your personal selection."
 ---
 
+<ParamField header="AppId" type="string" required>
+  Application ID from dashboard
+</ParamField>
+
 #### BODY PARAMS
  
 <ParamField body="plan" type="string" required>
