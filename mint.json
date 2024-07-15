@@ -37,13 +37,13 @@
     },
 
     {
-      "name": "Changelog",
-      "url": "changelog"
+      "name": "SDKs",
+      "url": "sdks"
     },
 
     {
-      "name": "Test data",
-      "url": "test-data"
+      "name": "Changelog",
+      "url": "changelog"
     }
 
 
@@ -69,17 +69,7 @@
             }
         ]
     },
-    {
-      "group": "LIBRARIES & SDKS",
-      "pages": [
-         "docs/sdks/overviews",
-          {
-              "group": "Libraries",
-              "pages": ["docs/sdks/javascript-library", "docs/sdks/react-library", "docs/sdks/react-native-library", "docs/sdks/flutter-library" ]
-          }
-      ]
-  },
-
+ 
 
 
 {
@@ -457,14 +447,24 @@
   ]
 },
 
-
 {
   "group": "Changelog",
   "pages": [
-    "changelog/api_changes",
-    "changelog/product_updates"
+    "changelog/api_changes"
+   
    
   ]
+},
+
+{
+  "group": "SDKs",
+   "pages": [
+         "sdks/overviews",
+          {
+              "group": "Libraries",
+              "pages": ["sdks/javascript-library", "sdks/react-library", "sdks/react-native-library", "sdks/flutter-library" ]
+          }
+      ]
 },
 
 {

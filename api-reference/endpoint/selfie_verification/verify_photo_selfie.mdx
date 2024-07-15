@@ -17,7 +17,7 @@ description: "An endpoint that allows you to verify an individual using their se
 </ParamField>
 
 
-<ParamField body="selfie_image" type="string" required>
+<ParamField body="selfie_image" type="string">
  Base64 value of the selfie image (NB: Kindly truncate data:image/jpeg;base64, from the selfie_image object).
 </ParamField>
 
@@ -71,7 +71,17 @@ description: "An endpoint that allows you to verify an individual using their se
       "photoId_glare": true,
       "age_range": "26-40 Years",
       "sunglasses": false,
-      "card_type": "VOTER'S CARD"
+      "card_type": "VOTER'S CARD",
+      "last_name": {
+			"match": true,
+			"last_name": "",
+			"confidence_value": 100
+		},
+		"first_name": {
+			"match": true,
+			"first_name": "",
+			"confidence_value": 100
+		}
     }
   }
 }

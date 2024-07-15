@@ -1,17 +1,344 @@
 ---
-title: 'API Changelog'
+title: 'Changelog'
 description: ''
 icon: 'code'
 ---
 
 The API changelog lists the changes to the Dojah API, SDK's and Libraries. If you’re looking for information about feature additions and product updates, see the [product blog](https://dojah.io/blog).
 
-2022-02-01 -
+The changelog below reflects new product developments and updates on a monthly basis.
 
--   The KYC widget supports customization of verification pages by specifying type: 'custom' in KYC widget configuration, and adding pages array and configuration object.
-    
--   Easy onboard
-    
--   Easy Lookup
-    
--   Easy Connect
+## July 2024
+
+**MULTI-CHANNEL OTP VERIFICATION**
+
+In this release, we've updated a more flexible OTP verification process!
+Introducing multi-channel OTP verification. We are giving you more control over how your users receive their one-time passcodes.
+
+Here's what you can now do:
+
+**Choose the channel**: Select between SMS or WhatsApp for OTP delivery, depending on your user preferences.
+
+**Double the options**: Send the OTP to both channels simultaneously for users with potentially unreliable mobile networks. This ensures they receive their code no matter what.
+
+With these options, you can cater to user preferences and improve the overall verification experience.
+
+
+![](/images/changelog1.png)
+
+
+## April 2024
+
+**FEATURE ENHANCEMENTS**
+
+Experience smoother verification processes with our latest updates! From enhanced ID widget features to more control over verification options, our latest update streamlines your workflow. Plus, we've fixed several bugs to ensure seamless application performance. Thank you for choosing us for your verification needs!
+
+**Email OTP for BVN Advanced:**
+
+ We've enhanced our ID widget! When BVN Advanced is selected in the verification flow, Email OTP verification is activated. Easily verify users by sending a one-time password directly to their email. This feature is available for BVN Advanced government data points only.
+
+![](/images/changelog2.png)
+
+**File Upload Control:**
+We're introducing more control to Easy Onboard! With our latest update, you can now enable or disable the file upload option on the Government issued ID page, Business ID page and Other ID/Document page. This update aligns with the new lending policy, ensuring compliance and flexibility for your business.
+
+![](/images/changelog3.png)
+
+**Camera Flip Functionality:**
+Say hello to easier verification processes! We've added a flip camera option for liveness verification, government ID capture, and government data with selfie verification. Now, users can toggle the camera flip feature on or off, giving them more control over their verification process.
+
+![](/images/changelog4.png)
+
+
+**EasyOnboard Configuration Update:**
+Making verification processes even easier! We've consolidated the verification process by moving application feature into the configuration section on Easyonboard. Now, creating a verification flow is simpler than ever. Just toggle your configuration process flows on or off with fewer clicks.
+![](/images/changelog5.png)
+
+**Multiple Device Screen Control:**
+More control, more flexibility! You can now decide whether users continue their verification process on their mobile or tablet devices. With our latest update, you have the power to enable or disable this option according to your business needs.
+
+![](/images/changelog6.png)
+
+We've also made several bug fixes to ensure our application runs seamlessly. Thank you for your feedback and continued support!
+
+> GLOBAL BUSINESS SEARCH
+
+We're thrilled to announce the launch of our Global Business Search feature, empowering you to explore and verify businesses worldwide effortlessly.
+
+Global Business Search is a powerful tool designed to help you search for businesses worldwide, providing a comprehensive solution for global business identification and verification.
+
+**Key Features:**
+
+**Flexible Search Criteria:** Search for businesses using various criteria such as business name and country location.
+
+**Comprehensive Results:** Get a list of results featuring the actual business and similar business names to ensure you find what you're looking for.
+
+**Easy Selection:** Choose from the displayed results quickly and efficiently.
+
+**Reliable Data Sources:** Rest assured, the authenticity of the business is validated through reliable global data sources, all clearly labeled for transparency.
+
+**How it Works:**
+**Enter your search criteria:** Simply input the business name and country location you're interested in.
+**Browse through the results:** Review the list of businesses along with similar names to find what you need.
+Select your choice: Once you've found the business you're looking for, select it from the list.
+Verify with confidence: Be confident in the authenticity of the business, as it's validated through reliable global data sources.
+
+**How to Perform Global Business Search:**
+- Navigate to the "Government Lookup" section in the sidebar
+- Click on "Business Lookup" to proceed
+- Perform a business lookup by clicking on the "Perform Single Lookup" button
+- Select an app from the provided options
+- Choose "Global Check" as the ID Type
+- Select the country for your search
+- Enter the company name you wish to search for
+- Select company from result options and verify the authencity of the searched business
+
+Viola! You've successfully performed a Global Business Search
+
+
+![](/images/changelog7.png)
+
+With Global Business Search, you can now effortlessly validate the existence and details of businesses on a global scale, saving you time and ensuring you make informed decisions.
+Empower yourself with Global Business Search today and explore the world of businesses like never before!
+
+> SIDEBAR
+
+Sidebar is an essential part of Dojah's User Dashboard, facilitating easy navigation of services.
+
+In pursuit of a better user experience, we have opted to revamp the sidebar by consolidating some services into internal navigation rather than dropdown menus, reorganizing services, etc.
+
+In the new sidebar, we still maintained the use of sub-titles of services, and drop-down of services under products. There were some re-categorization of some products in this sidebar.
+
+**Quick Action:** In this new Sidebar, you can check your wallet balance and top-up from the quick action page.
+
+![](/images/changelog8.png)
+
+
+**Dashboard:** This feature used to exist in the current sidebar. In the newly improved sidebar, it does not exist.
+
+**Developers:** In the previous sidebar layout, developers were positioned as the third item users see on their users' dashboards, featuring a dropdown menu containing services like Configuration, API Tokens, API Logs, Webhooks, and Documentation. In the updated sidebar, developers have been moved towards the bottom of the sidebar and it is still presented as a dropdown menu that includes services such as Configuration, API Tokens, Webhooks, and Documentation.
+
+![](/images/changelog9.png)
+
+
+**Identity Verification:** In the previous sidebar, the subtitle "No-code tools" housed Easy Lookup, AML Screening, Easy Onboard, and Document Analysis. In the new sidebar, we have changed the subtitle from "No-code tools" to "Identity Verification.”
+
+![](/images/changelog10.png)
+
+Old sidebar with “No-code tools”
+
+![](/images/changelog11.png)
+
+
+New sidebar with “Identity Verification”
+
+Easy Lookup (Now Government Lookup): In the current sidebar, Easy Lookup is presented as a dropdown menu offering options for Individual Lookup and Business Lookup. In the new sidebar, Easy Lookup has been renamed to "Government Lookup" and is no longer displayed as a dropdown menu but as an internal screen navigation for accessing Individual Lookup and Business Lookup.
+
+
+![](/images/changelog12.png)
+
+**Easy Onboard:** It has been transformed into a dropdown menu containing Verification Flows, which was previously an internal inner screen. The Easy Onboard drop-down also now houses  “Verification”, which was formerly used to be “ID Verification”,  under Widget.
+
+
+![](/images/changelog13.png)
+
+**Document Analysis:** This is now listed under Identity Verification. No changes was made.
+
+**Address Verification:** This is now listed under Identity Verification. No changes was made
+
+**Fraud Monitoring:** In the old sidebar, we have Fraud Detection as a subtitle which houses Overview, Flows, Pending case, Custom list, Reconciliation. In the new sidebar, we changed it from Fraud Detection to Fraud monitoring as a subtitle which now houses AML Screening, Reconciliation, Easy Detect, Custom List, Easy credit check (coming soon). 
+
+**AML Screening:** It used to be under “No-code tools” but it is now under “Fraud Monitoring”. Also, it used to a drop down that houses User screening and Business screening but it is now an internal navigation in the new sidebar. 
+
+
+![](/images/changelog14.png)
+
+**Reconciliation and Custom List** remains in the same position and listed under fraud monitoring with no new changes
+
+**Easy Detect** is a new product to replace “Fraud detection” as its comes in a drop-down that accommodates services such as Overview, Flow, Pending cases. No changes were made to these services.
+
+![](/images/changelog15.png)
+
+**Report Analytics:** The name remains the same as a subtitle and it houses Messaging Logs but in the new sidebar, we added API reports and Easy detect report
+
+![](/images/changelog16.png)
+
+**Billing:** This used to be under Settings but in this current sidebar. For this new sidebar, it is a stand-alone drop-down that has list of services under it such as Transaction history and API Calls which used to be inside the Internal screen. 
+
+![](/images/changelog17.png)
+
+**Settings:** In the current sidebar, It is a sub-title and maintains list of services under it which are Profile, Audit Log, Team, and Billings. For the new sidebar, it is a drop-down that list services such as Team, Profile, Audit log (No more billings under it). 
+
+![](/images/changelog18.png)
+
+## Feb 2024
+
+**FEATURE ENHANCEMENT**
+
+
+We are pleased to announce several improvements to enhance your Dojah experience. These enhancements are designed to streamline your workflow and provide greater flexibility in performing lookups and AML screening. Here's what's new in this release:
+
+**Key Enhancements:**
+
+**Easy Lookup Overhaul**
+
+**Individual and Business Lookup Separation:** We've reworked the lookup process to separate individual lookup from business lookup, ensuring clarity and ease of use.
+
+**Batch Lookup Capability:** You can perform batch lookups by uploading and conducting lookups on multiple users for each lookup type, providing efficiency and convenience.
+
+**AML Screening Update **
+
+**Introduction of Business Screening:** We've expanded our AML screening process to include business screening. You can now screen your users' businesses for AML compliance effortlessly.
+
+**Unified AML Feature:** Dojah's AML feature now encompasses both user screening and business screening, offering a comprehensive solution for compliance needs.
+
+![](/images/changelog19.png)
+
+
+![](/images/changelog20.png)
+
+
+![](/images/changelog21.png)
+
+
+![](/images/changelog22.png)
+
+
+
+
+**Bug Fixes and Improvements:**
+Minor bug fixes and performance enhancements to optimize your Dojah experience.
+
+**Note:** This release reflects our commitment to continuously improving Dojah to meet the evolving needs of our users. We're dedicated to providing you with the tools you need to succeed in your compliance and verification processes.
+Stay tuned for more updates and improvements as we continue to evolve Dojah to meet your needs.
+
+
+
+> **INTRODUCING: DOCUMENT ANALYSIS**
+
+We are excited to announce the release of the Document Analysis feature in Dojah, aimed at enhancing user authentication processes with ease and accuracy. This feature empowers businesses to efficiently validate the authenticity of various user documents without the need for any coding expertise. Here's what's included in this release:
+
+**Key Features**
+
+**Simple Drag-and-Drop Interface:** Revel introduces a user-friendly drag-and-drop interface that simplifies the document validation process. Users can now effortlessly upload images of their documents without any hassle.
+
+**Multi-Document Support:** Users can validate a variety of documents including driver's licenses, passports, national IDs, and Voter's cards.
+
+**Instant Feedback:** Users receive immediate feedback if the uploaded image is unreadable by the system, ensuring a seamless experience.
+
+**Detailed Document Results:** Upon analysis, users are presented with comprehensive document results directly on the dashboard, including a clear indication of the document's validity status.
+
+**How It Works**
+
+**Select Country and Document Type:** Users begin by selecting the country of the issued document and the specific document type for analysis.
+
+**Upload or Capture Image:** Using the intuitive drag-and-drop interface, users can upload images of their documents effortlessly. 
+
+**Receive Instant Feedback:** If the uploaded image is not readable, users receive instant feedback, allowing them to rectify the issue promptly.
+
+**View Detailed Document Results:** Users can access detailed document results directly on the dashboard, providing insights into the authenticity of the document.
+
+![](/images/changelog23.png)
+
+We're excited to see how this feature streamlines your processes and enhances your security measures. Stay tuned for more updates and enhancements as we continue to innovate and empower your business.
+
+
+## Dec 2023
+
+**Business Email Authentication and Other Improvements**
+
+We're thrilled to announce the release of a set of features and improvements to elevate your experience with Dojah.
+
+**Business Email Authentication **
+
+With business email authentication, you can tailor your onboarding experience! Businesses have even more control over their user onboarding process with our new Business Email Authentication feature. Configure the types of emails you want users to onboard with using two flexible options:
+
+**Disposable Email Toggle:**
+
+Enable or disable the acceptance of temporary or easily disposable email addresses, enhancing your ability to manage user authenticity.
+
+**Free Provider Option:**
+
+Empower your users to sign up with emails from popular platforms like Gmail or Yahoo, while still maintaining control over the authenticity of business-related emails.
+
+Business Email Authentication is located on the verification page of the Easy Onboard dashboard, you select "email" has a verification page and then you configure your email settings according to your onboarding preference.
+
+![](/images/changelog24.png)
+
+**Other Noteworthy Improvements**
+
+**1. Verification Demo on the Website:**
+
+Potential clients can now test our verification platform directly on our website. Get a firsthand feel of the power and accuracy of our identity verification solutions, empowering you to make informed decisions.
+
+![](/images/changelog25.png)
+
+
+**2. Download AML Lookup Results:**
+
+Seamlessly download any AML (Anti-Money Laundering) lookup result page, providing you with convenient access to critical information at your fingertips.
+**3. Updated Login Screens:**
+
+Say hello to our fresh-faced login screens! Clients logging into their dashboard will now be greeted with not only an updated visual appeal but also marketing updates. Interact with these updates and take action when specific calls to action is inserted.
+
+
+![](/images/changelog26.png)
+
+
+**4. Glasses On Feature Update:**
+
+Our Glasses On feature gets an upgrade! Now, real humans can review verifications configured with glasses on, ensuring meticulous accuracy in the verification process.
+
+
+![](/images/changelog27.png)
+
+## Nov 2023
+
+**Simplify Integration with EasyOnboard: JavaScript Code Made Easy**
+
+We have added a new update! if you want to seamlessly integrate our widget into your application using the API, we've got you covered! We've added some cool JavaScript code that allows you to customize your onboarding flow with easyonboard. Just save your flow, copy the code, and paste it into your application for a seamless integration with the ID verification widget. 
+
+To find the API code, head over to the integration section of the easyonboard page. Select "websdk" as your option, and you'll see the preview screen with the JavaScript code. Simply copy it and paste it into your application. Voila! Your users can now be seamlessly verified. Happy integrating! 
+
+![](/images/changelog28.png)
+
+
+## Oct 2023
+
+
+**EasyOnboard Improvements & Bug fixes**
+
+We're thrilled to share the latest improvements and bug fixes we've made to the EasyOnboard feature and user application! Our goal is to provide you with a smoother and more user-friendly experience.
+    - **No More Duplicate Titles:** To enhance clarity and avoid confusion, we've made it so that you can no longer rename a flow with the same titles. This ensures that each flow has a unique and distinguishable name, making it easier to manage and organize your workflow.
+    - **Adding Delete Button to the Table:** We heard your feedback, and we agree that quick access to the delete function is essential. Now, with the addition of a conveniently placed delete button on the table, you can easily remove unwanted flows without any hassle.
+    - **Confirmation Pop-up for Unsaved Changes:** We understand that it's easy to accidentally leave a page without saving your work. To prevent any accidental loss of progress, we've implemented a helpful confirmation pop-up as a gentle reminder to prompt you to save your latest updates before you move on.
+
+In addition to these improvements, we've also taken care of various bugs within the application. Our dedicated team has worked diligently to enhance the user experience, addressing any issues encountered to guarantee smooth and seamless usage of the dashboard application.
+
+We hope these updates contribute to a more efficient and enjoyable experience when using EasyOnboard. As always, we appreciate your feedback as it helps us continue to refine and improve our services. 
+
+
+
+> **Advanced Identity Verification Customization**
+
+At Dojah, we constantly strive to provide our clients with innovative solutions to enhance their onboarding processes. We are thrilled to announce the release of two additional features that will enable businesses to customize and streamline user identity verification with greater flexibility.
+
+**1️⃣ Detect with Brightness Level:**
+
+With this new feature, businesses can now detect a user's identity based on the brightness level of their device. This customizable percentage level allows for a more tailored identity verification process, ensuring smoother onboarding experiences for users.
+
+**2️⃣ Detect with Glasses On:**
+
+We understand the importance of flexibility in user identity verification. With this new feature, businesses can now choose whether to verify a user's identity with or without glasses. This option enables businesses to align their identification requirements with different use cases, accommodating for users who regularly wear glasses and ensuring user-friendly verification checks.
+
+
+To access these features, simply navigate to the Fraud Check session within the easy onboard flow and locate the "Detect with Liveness" toggle. Once enabled, businesses can leverage these advanced identity verification options.
+
+![](/images/changelog29.png)
+
+
+By enabling easy adjustment of identification settings, businesses can strike the perfect balance between convenience and fraud prevention, ultimately delivering an exceptional user experience.
+
+We believe that these new features will provide businesses with the flexibility they need while maintaining the highest levels of security and accuracy in identity verification.
+
+To explore these exciting features and learn more about how they can be implemented within your business, please reach out to our dedicated support team.

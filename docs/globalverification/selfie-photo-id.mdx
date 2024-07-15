@@ -23,10 +23,10 @@ To Verify Photo ID with Selfie Image;
 
 | POST Parameter | Type | Description |
 | --- | --- | --- |
-| selfie_image  
-_REQUIRED_ | string | Base64 value of the selfie image
-NB: Kindly truncate **data:image/jpeg;base64,** from the selfie_image object. |
+| selfie_image  | string | Base64 value of the selfie image NB: Kindly truncate **data:image/jpeg;base64,** from the selfie_image object. |
 | photoid_image _REQUIRED_ | string | Base64 value of the photoId image NB: Kindly truncate **data:image/jpeg;base64,** from the selfie_image object.|
+| first_name  | string | |
+| last_name  | string | |
 
 ### Header
 
@@ -45,17 +45,29 @@ NB: Kindly truncate **data:image/jpeg;base64,** from the selfie_image object. |
 
 ```json Response
 {
-    "entity": {
-        "selfie": {
-            "confidence_value": 90,
-            "match": true,
-            "photoId_image_blurry": false,
-            "selfie_image_blurry": false,
-            "selfie_glare": true,
-            "photoId_glare": true,
-            "age_range": "25-35 years",
-            "sunglasses": false
-        }
+  "entity": {
+    "selfie": {
+      "confidence_value": 0,
+      "match": false,
+      "photoId_image_blurry": false,
+      "selfie_image_blurry": false,
+      "selfie_glare": true,
+      "photoId_glare": true,
+      "age_range": "26-40 Years",
+      "sunglasses": false,
+      "card_type": "VOTER'S CARD",
+      "last_name": {
+			"match": true,
+			"last_name": "",
+			"confidence_value": 100
+		},
+		"first_name": {
+			"match": true,
+			"first_name": "",
+			"confidence_value": 100
+		}
     }
+  }
 }
+
 ```
