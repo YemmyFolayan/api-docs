@@ -465,15 +465,9 @@
               "pages": ["sdks/javascript-library", "sdks/react-library", "sdks/react-native-library", "sdks/flutter-library" ]
           }
       ]
-},
-
-{
-  "group": "Test data",
-  "pages": [
-    "test-data/sandbox_data"
-  
-  ]
 }
+
+
 
 
   ],
